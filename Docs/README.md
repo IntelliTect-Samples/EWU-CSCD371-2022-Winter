@@ -11,7 +11,7 @@ You can also send an e-mail to: EWU-Instructors@IntelliTect.com
 We will be utilizing Microsoft Teams for this class. The link to the meeting will be in the course syllabus on Canvas. You can find additional information for accessing Teams [here](MicrosoftTeams.md)
 
 ## GitHub Information
-Please fill out this [google form](https://forms.gle/TODO) with your GitHub information. This is used by us so we can appropriately grade assignments.
+Please fill out this [form](https://forms.office.com/r/ywfk1Se8nu) with your GitHub information. This is used by us so we can appropriately grade assignments.
 
 ## Book
 Essential C# 8.0 (7th Edition)  
@@ -26,12 +26,12 @@ ISBN-13: 9780135972267
 ## Computer Setup ##
 
 ### Required ###
-- [.NET 5.0](https://dotnet.microsoft.com/download)
+- [.NET 6.0](https://dotnet.microsoft.com/download)
 
 Though most of the course work will be cross platform, we will be working on Windows inside of Visual Studio. For the UI portion of the class Visual Studio on Windows will be required. 
 
 ### Recommended ###
-- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/). Version 17.1 or later. The community edition is fine, though we believe most students should have access to higher SKUs with EWU's MSDN (this assumption may be wrong). Lab computers should have Professional already installed.
+- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/). Version 17.1 or later. The community edition is fine, though we believe most students should have access to higher SKUs with EWU's MSDN (this assumption may be wrong). Lab computers should have Professional already installed. This will install .NET 6.0.
 - [GitKraken](https://gitkraken.keboo.dev/) Though you can do all of the git interaction from within Visual Studio or on the command line, GitKraken is free for open source work. It also provides a nice graphical version of the commit history so you can see how various commits and branches relate. 
 - [GitHub Student Developer Pack](https://education.github.com/students) Lots of great development tools and resources. The JetBrains products ReSharper (a plugin for Visual Studio), and Rider (a full C# IDE) are great tools for helping you write better code. 
 
