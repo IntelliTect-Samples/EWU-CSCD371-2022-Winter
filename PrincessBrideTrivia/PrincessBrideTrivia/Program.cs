@@ -13,6 +13,7 @@ namespace PrincessBrideTrivia
             int numberCorrect = 0;
             for (int i = 0; i < questions.Length; i++)
             {
+                // There is a bug around here!
                 bool result = AskQuestion(questions[i]);
                 if (result)
                 {
@@ -89,6 +90,7 @@ namespace PrincessBrideTrivia
                 question.Answers[1] = answer2;
                 question.Answers[2] = answer3;
                 question.CorrectAnswerIndex = correctAnswerIndex;
+                questions[i] = question;
             }
             return questions;
         }
