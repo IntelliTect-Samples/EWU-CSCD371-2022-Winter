@@ -1,4 +1,5 @@
-﻿using System;
+// Comment Here
+using System;
 using System.IO;
 
 namespace PrincessBrideTrivia
