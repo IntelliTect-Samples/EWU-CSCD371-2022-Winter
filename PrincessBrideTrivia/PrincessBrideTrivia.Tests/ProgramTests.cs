@@ -1,11 +1,27 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
+
 
 namespace PrincessBrideTrivia.Tests
 {
     [TestClass]
     public class ProgramTests
     {
+        string filepath = "DELETEME.txt";
+        Random seededRand = new Random(2); //This seed is guaranteed to give a random order
+        Question[] questions;
+        Question[] randomQuestions;
+
+        [TestInitialize]
+        public void TestInit()
+        {
+            GenerateQuestionsFile(filepath, 12);
+            questions = Program.LoadQuestions(filepath);
+            randomQuestions = Program.RandomizeArray<Question>(questions, seededRand);
+            File.Delete(filepath);
+        }
+
         [TestMethod]
         public void LoadQuestions_RetrievesQuestionsFromFile()
         {
@@ -60,7 +76,7 @@ namespace PrincessBrideTrivia.Tests
         [DataRow(5, 10, "50%")]
         [DataRow(1, 10, "10%")]
         [DataRow(0, 10, "0%")]
-        public void GetPercentCorrect_ReturnsExpectedPercentage(int numberOfCorrectGuesses, 
+        public void GetPercentCorrect_ReturnsExpectedPercentage(int numberOfCorrectGuesses,
             int numberOfQuestions, string expectedString)
         {
             // Arrange
@@ -71,6 +87,61 @@ namespace PrincessBrideTrivia.Tests
             // Assert
             Assert.AreEqual(expectedString, percentage);
         }
+
+
+
+        [TestMethod]
+        public void RandomizeArray_AltersQuestionArray()
+        {
+            bool isChanged = false;
+            for (int i = 0; i < questions.Length; i++)
+            {
+                if (questions[i].Text.Equals(randomQuestions[i].Text))
+                    isChanged = true;
+            }
+
+            Assert.IsTrue(isChanged);
+
+            File.Delete(filepath);
+
+        }
+
+
+        [TestMethod]
+        public void RandomizeArray_AlteredQuestionArrayHasOriginalQuestions()
+        {
+            string filepath = "DELETEME.txt";
+            GenerateQuestionsFile(filepath, 12);
+            Random seededRand = new Random(2); //This seed is guaranteed to give a random order
+            Question[] questions = Program.LoadQuestions(filepath);
+            Question[] randomQuestions = Program.RandomizeArray<Question>(questions, seededRand);
+            bool hasOriginalQuestions = true;
+
+            foreach (Question q in questions)
+            {
+                bool questionFound = false;
+
+                foreach (Question randomq in randomQuestions)
+                {
+                    if (q.Text.Equals(randomq.Text) &&
+                        q.Answers.Equals(randomq.Answers) &&
+                        q.CorrectAnswerIndex.Equals(randomq.CorrectAnswerIndex))
+                    {
+                        questionFound = true;
+                    }
+                }
+
+                if (questionFound == false)
+                {
+                    hasOriginalQuestions = questionFound;
+                }
+            }
+
+            Assert.IsTrue(hasOriginalQuestions);
+
+        }
+
+
 
 
         private static void GenerateQuestionsFile(string filePath, int numberOfQuestions)
@@ -86,5 +157,10 @@ namespace PrincessBrideTrivia.Tests
                 File.AppendAllLines(filePath, lines);
             }
         }
+
+
     }
+
+
 }
+
