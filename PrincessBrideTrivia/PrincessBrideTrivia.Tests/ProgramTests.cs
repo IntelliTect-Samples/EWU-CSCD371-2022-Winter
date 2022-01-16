@@ -96,25 +96,19 @@ namespace PrincessBrideTrivia.Tests
             bool isChanged = false;
             for (int i = 0; i < questions.Length; i++)
             {
-                if (questions[i].Text.Equals(randomQuestions[i].Text))
+                if (!questions[i].Text.Equals(randomQuestions[i].Text))
                     isChanged = true;
             }
 
             Assert.IsTrue(isChanged);
 
-            File.Delete(filepath);
 
         }
 
-
+         
         [TestMethod]
         public void RandomizeArray_AlteredQuestionArrayHasOriginalQuestions()
         {
-            string filepath = "DELETEME.txt";
-            GenerateQuestionsFile(filepath, 12);
-            Random seededRand = new Random(2); //This seed is guaranteed to give a random order
-            Question[] questions = Program.LoadQuestions(filepath);
-            Question[] randomQuestions = Program.RandomizeArray<Question>(questions, seededRand);
             bool hasOriginalQuestions = true;
 
             foreach (Question q in questions)
