@@ -8,8 +8,9 @@ namespace PrincessBrideTrivia
         public static void Main(string[] args)
         {
             string filePath = GetFilePath();
+            Random rng = new Random();
             Question[] questions = LoadQuestions(filePath);
-
+            questions = RandomizeArray<Question>(questions, rng);
             int numberCorrect = 0;
             for (int i = 0; i < questions.Length; i++)
             {
@@ -93,6 +94,28 @@ namespace PrincessBrideTrivia
                 questions[i] = question;
             }
             return questions;
+        }
+
+        public static T[] RandomizeArray<T>(T[] array, Random rng)
+        {
+            //The parameter array is unchanged by this function
+            T[] retArray = (T[])array.Clone();
+
+
+            for (int i = 0; i < retArray.Length; i++)
+            {
+                int swapTo = rng.Next(0, retArray.Length);
+
+                if (swapTo != i)
+                {
+                    T temp = retArray[i];
+                    retArray[i] = retArray[swapTo];
+                    retArray[swapTo] = temp;
+                }
+                
+            }
+
+            return retArray;
         }
     }
 }
