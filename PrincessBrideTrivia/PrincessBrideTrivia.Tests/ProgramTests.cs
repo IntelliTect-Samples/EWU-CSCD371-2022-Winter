@@ -60,7 +60,7 @@ namespace PrincessBrideTrivia.Tests
         [DataRow(5, 10, "50%")]
         [DataRow(1, 10, "10%")]
         [DataRow(0, 10, "0%")]
-        public void GetPercentCorrect_ReturnsExpectedPercentage(int numberOfCorrectGuesses, 
+        public void GetPercentCorrect_ReturnsExpectedPercentage(int numberOfCorrectGuesses,
             int numberOfQuestions, string expectedString)
         {
             // Arrange
@@ -73,7 +73,7 @@ namespace PrincessBrideTrivia.Tests
         }
 
 
-        private static void GenerateQuestionsFile(string filePath, int numberOfQuestions)
+        private void GenerateQuestionsFile(string filePath, int numberOfQuestions)
         {
             for (int i = 0; i < numberOfQuestions; i++)
             {
@@ -85,6 +85,16 @@ namespace PrincessBrideTrivia.Tests
                 lines[4] = "2";
                 File.AppendAllLines(filePath, lines);
             }
+        }
+        [TestMethod]
+        public void RandomizerQuestionGenerator() //tests for added random feature 
+        {
+            string file = Path.GetRandomFileName(); //creates file path
+            GenerateQuestionsFile(file, 2); //creates path for two questions.
+            Question[] firstQuestion = Program.LoadQuestions(file); //loads first question
+            Question[] secondQuestion = Program.LoadQuestions(file);//loads second question
+            File.Delete(file); //deletes file path
+
         }
     }
 }

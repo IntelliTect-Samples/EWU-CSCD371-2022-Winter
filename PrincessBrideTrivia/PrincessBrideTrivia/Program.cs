@@ -1,5 +1,9 @@
-﻿using System;
+﻿//Gaven Elder
+//test commit.
+using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PrincessBrideTrivia
 {
@@ -24,7 +28,7 @@ namespace PrincessBrideTrivia
 
         public static string GetPercentCorrect(int numberCorrectAnswers, int numberOfQuestions)
         {
-            return (numberCorrectAnswers / numberOfQuestions * 100) + "%";
+            return ((float)numberCorrectAnswers / numberOfQuestions * 100) + "%";
         }
 
         public static bool AskQuestion(Question question)
@@ -65,6 +69,11 @@ namespace PrincessBrideTrivia
         {
             return "Trivia.txt";
         }
+        public static Question[] RandomQuestionGenerator(Question[] questions) // added random feature
+        {
+            Random Rquestion = new Random();
+            return questions.OrderBy(newQuestion => Rquestion.Next()).ToArray(); //needed to add Systen.ling to use orderBy;
+        }
 
         public static Question[] LoadQuestions(string filePath)
         {
@@ -90,7 +99,7 @@ namespace PrincessBrideTrivia
                 question.Answers[2] = answer3;
                 question.CorrectAnswerIndex = correctAnswerIndex;
             }
-            return questions;
+            return RandomQuestionGenerator(questions);
         }
     }
 }
