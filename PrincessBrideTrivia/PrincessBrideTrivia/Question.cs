@@ -1,4 +1,6 @@
-﻿namespace PrincessBrideTrivia
+﻿using System;
+
+namespace PrincessBrideTrivia
 {
     public class Question
     {

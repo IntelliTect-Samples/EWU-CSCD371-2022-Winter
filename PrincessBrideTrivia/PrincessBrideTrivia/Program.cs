@@ -3,11 +3,7 @@ using System.IO;
 
 // Whitney Bolar
 // Course: CSCD 371 .Net Programming
-// Description
-
-// References:
-// https://www.dotnetperls.com/path
-
+// Description: 
 
 namespace PrincessBrideTrivia
 {
@@ -15,13 +11,9 @@ namespace PrincessBrideTrivia
     {
         public static void Main(string[] args)
         {
-            // * Code Reference: https://www.dotnetperls.com/path
-                string path = @"C:\Users\WhitneyBolar\source\repos\Assignment1\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\Trivia.txt";
+                string filePath = GetFilePath();
 
-                string filePath = GetFilePath(path);
-                string fileName = Path.GetFileName(filePath);
-
-                Question[] questions = LoadQuestions(fileName);
+                Question[] questions = LoadQuestions(filePath);
 
                 int numberCorrect = 0;
                 for (int i = 0; i < questions.Length; i++)
@@ -43,7 +35,10 @@ namespace PrincessBrideTrivia
 
         public static string GetPercentCorrect(int numberCorrectAnswers, int numberOfQuestions)
         {
-            return (numberCorrectAnswers / numberOfQuestions * 100) + "%";
+            double numCorrectAnswers = numberCorrectAnswers;
+            double numOfQuestions = numberOfQuestions;
+
+            return (numCorrectAnswers / numOfQuestions * 100) + "%";
         }
 
         public static bool AskQuestion(Question question)
@@ -85,6 +80,13 @@ namespace PrincessBrideTrivia
             return "Trivia.txt";
         }
 
+
+        public static Object Question()
+        {
+            Object question = new Object();
+            return question;
+        }
+
         public static Question[] LoadQuestions(string fileName)
         {
             string[] lines = File.ReadAllLines(fileName);
@@ -108,6 +110,7 @@ namespace PrincessBrideTrivia
                 question.Answers[1] = answer2;
                 question.Answers[2] = answer3;
                 question.CorrectAnswerIndex = correctAnswerIndex;
+                questions[i] = question;
             }
             return questions;
         }
