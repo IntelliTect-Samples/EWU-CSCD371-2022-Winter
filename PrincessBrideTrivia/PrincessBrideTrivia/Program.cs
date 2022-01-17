@@ -13,7 +13,6 @@ namespace PrincessBrideTrivia
         {
             string filePath = GetFilePath();
             Question[] questions = LoadQuestions(filePath);
-            //test commit example.
             int numberCorrect = 0;
             for (int i = 0; i < questions.Length; i++)
             {
@@ -69,10 +68,10 @@ namespace PrincessBrideTrivia
         {
             return "Trivia.txt";
         }
-        public static Question[] RandomQuestionGenerator(Question[] questions) // added random feature
+        public static Question[] RandomQuestionGenerator(Question[] questions) // added feature
         {
             Random Rquestion = new Random();
-            return questions.OrderBy(newQuestion => Rquestion.Next()).ToArray(); //needed to add Systen.ling to use orderBy;
+            return questions.OrderBy(newQuestion => Rquestion.Next()).ToArray(); //add Systen.ling to use orderBy;
         }
 
         public static Question[] LoadQuestions(string filePath)
