@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace PrincessBrideTrivia
 {
@@ -10,8 +11,11 @@ namespace PrincessBrideTrivia
             string filePath = GetFilePath();
             Question[] questions = LoadQuestions(filePath);
 
+            Random randomGen = new();
+            int[] randomQuestionIndexes = Enumerable.Range(0, questions.Length).OrderBy(x => randomGen.Next()).ToArray();
+
             int numberCorrect = 0;
-            for (int i = 0; i < questions.Length; i++)
+            foreach (int i in randomQuestionIndexes)
             {
                 bool result = AskQuestion(questions[i]);
                 if (result)
