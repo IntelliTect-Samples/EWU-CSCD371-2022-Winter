@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Linq;
 
 namespace PrincessBrideTrivia.Tests
 {
@@ -94,8 +95,8 @@ namespace PrincessBrideTrivia.Tests
             Question[] questionSet1 = Program.LoadQuestions(filePath);
             Question[] questionSet2 = Program.LoadQuestions(filePath);
 
-            // Assert 
-            Assert.AreNotEqual(questionSet1, questionSet2);
+            // Assert
+            Assert.IsFalse(questionSet1.SequenceEqual(questionSet2));  
         }
     }
 }
