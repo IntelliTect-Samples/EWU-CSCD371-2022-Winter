@@ -11,11 +11,8 @@ namespace PrincessBrideTrivia
             string filePath = GetFilePath();
             Question[] questions = LoadQuestions(filePath);
 
-            Random randomGen = new();
-            int[] randomQuestionIndexes = Enumerable.Range(0, questions.Length).OrderBy(x => randomGen.Next()).ToArray();
-
             int numberCorrect = 0;
-            foreach (int i in randomQuestionIndexes)
+            for (int i = 0; i < questions.Length; i++)
             {
                 bool result = AskQuestion(questions[i]);
                 if (result)
@@ -96,7 +93,9 @@ namespace PrincessBrideTrivia
 
                 questions[i] = question;
             }
-            return questions;
+
+            Random randomGen = new();
+            return questions.OrderBy(x => randomGen.Next()).ToArray();
         }
     }
 }
