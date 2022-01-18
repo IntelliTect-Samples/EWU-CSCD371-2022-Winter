@@ -96,7 +96,7 @@ namespace PrincessBrideTrivia.Tests
             Question[] questionSet2 = Program.LoadQuestions(filePath);
 
             // Assert
-            Assert.IsFalse(questionSet1.SequenceEqual(questionSet2));  
+            Assert.IsFalse(questionSet1.SequenceEqual(questionSet2));
         }
     }
 }
