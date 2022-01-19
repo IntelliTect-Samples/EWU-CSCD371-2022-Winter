@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-
+using System.Linq;
 namespace PrincessBrideTrivia.Tests
 {
     [TestClass]
@@ -17,7 +17,6 @@ namespace PrincessBrideTrivia.Tests
 
                 // Act
                 Question[] questions = Program.LoadQuestions(filePath);
-
                 // Assert 
                 Assert.AreEqual(2, questions.Length);
             }
@@ -73,7 +72,7 @@ namespace PrincessBrideTrivia.Tests
         }
 
 
-        private void GenerateQuestionsFile(string filePath, int numberOfQuestions)
+        private static void GenerateQuestionsFile(string filePath, int numberOfQuestions)
         {
             for (int i = 0; i < numberOfQuestions; i++)
             {
@@ -87,14 +86,23 @@ namespace PrincessBrideTrivia.Tests
             }
         }
         [TestMethod]
-        public void RandomizerQuestionGenerator() //tests for added random feature 
+        public void RandomOrderedQuestionLoader()  
         {
-            string file = Path.GetRandomFileName(); //creates file path
-            GenerateQuestionsFile(file, 2); //creates path for two questions.
-            Question[] firstQuestion = Program.LoadQuestions(file); //loads first question
-            Question[] secondQuestion = Program.LoadQuestions(file);//loads second question
-            File.Delete(file); //deletes file path
+            string filePath = Path.GetRandomFileName();
+            try
+            {
+                //arrange
+                GenerateQuestionsFile(filePath, 2);
+                //act
+                Question[] firstQuestion = Program.LoadQuestions(filePath);
+                Question[] secondQuestion = Program.LoadQuestions(filePath);
+                bool arrayisequal = firstQuestion.SequenceEqual(secondQuestion);
+                //asset
+                Assert.IsFalse(arrayisequal);
+            }
+            finally
+                File.Delete(filePath);
 
         }
     }
-}
+
