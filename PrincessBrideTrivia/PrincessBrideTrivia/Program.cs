@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
 
+
+//CSCD371 Assignment1
+//Ty Nadalini and Tony Chan
+
 namespace PrincessBrideTrivia
 {
     public class Program
@@ -18,7 +22,7 @@ namespace PrincessBrideTrivia
                 if (result)
                 {
                     numberCorrect++;
-                    Console.WriteLine("Number of Correct Answers: " + numberCorrect + "/7");
+                    //Console.WriteLine("Number of Correct Answers: " + numberCorrect + "/7");
                 }
             }
             Console.WriteLine("You got " + GetPercentCorrect(numberCorrect, questions.Length) + " correct");
