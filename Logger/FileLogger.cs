@@ -2,6 +2,8 @@
 
 public class FileLogger : BaseLogger
 {
+    
+    public LogType = LogType.File;
     public FileLogger(string className, string filePath)
     {
         ClassName = className;
@@ -10,6 +12,7 @@ public class FileLogger : BaseLogger
 
     // double check implementation for get/set
     public override string ClassName { get; set; }
+
 
 
     public override void Log(LogLevel logLevel, string message)
