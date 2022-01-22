@@ -2,10 +2,19 @@
 
 public class FileLogger : BaseLogger
 {
-    public Log(LogLevel logLevel, string message)
+    public FileLogger(string className, string filePath)
     {
-        // need to implement
-        return ;
+        ClassName = className;
+
+    }
+
+    // double check implementation for get/set
+    public override string ClassName { get; set; }
+
+
+    public override void Log(LogLevel logLevel, string message)
+    {
+        throw new System.NotImplementedException();
     }
 }
 
