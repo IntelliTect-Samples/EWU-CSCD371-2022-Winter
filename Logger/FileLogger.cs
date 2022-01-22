@@ -13,9 +13,27 @@ public class FileLogger : BaseLogger
 
     public void Log(LogLevel logLevel, string message)
     {
-        // TODO: turn this in to a separate method
-        string newLogLine = "Test Line";
-        File.AppendAllLines(FilePath);
+        string newLogLine = BuildMessageLine(logLevel, message);
+
+        if (string.IsNullOrEmpty(newLogLine))
+        {
+            File.AppendAllLines(FilePath, newLogLine);
+        }
     }
 
+    private string BuildMessageLine(LogLevel logLevel, string message)
+    {
+        string fullLine = "";
+        fullLine = string.Format("{0} {1} {2}: {3}", GetFormatedDateTime(), nameof(this), logLevel.ToString, message);
+
+        return fullLine;
+    }
+
+    private string GetFormatedDateTime()
+    {
+        DateTime localDate = DateTime.Now;
+        string cultureName = "en-US";
+
+        return localDate.ToString(cultureName);
+    }
 }
