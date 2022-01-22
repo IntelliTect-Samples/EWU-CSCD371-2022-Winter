@@ -11,20 +11,20 @@ public class FileLogger : BaseLogger
         FilePath = filePath;
     }
 
-    public void Log(LogLevel logLevel, string message)
+    public override void Log(LogLevel logLevel, string message)
     {
         string newLogLine = BuildMessageLine(logLevel, message);
 
         if (string.IsNullOrEmpty(newLogLine))
         {
-            File.AppendAllLines(FilePath, newLogLine);
+            File.AppendAllText(FilePath, newLogLine);
         }
     }
 
     private string BuildMessageLine(LogLevel logLevel, string message)
     {
         string fullLine = "";
-        fullLine = string.Format("{0} {1} {2}: {3}", GetFormatedDateTime(), nameof(this), logLevel.ToString, message);
+        fullLine = string.Format("{0} {1} {2}: {3}", GetFormatedDateTime(), nameof(ClassName), logLevel.ToString(), message);
 
         return fullLine;
     }
