@@ -1,5 +1,6 @@
 ﻿namespace Logger;
 
+
 public enum LogType
 {
     File,

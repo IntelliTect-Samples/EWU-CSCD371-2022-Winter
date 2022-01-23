@@ -13,6 +13,7 @@ public class LogFactoryTests
 
         // this needs work
         Assert.IsInstanceOfType(testFactory, typeof(FileLogger));
+        Assert.
     }
 }
 
