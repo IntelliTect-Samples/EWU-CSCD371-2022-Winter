@@ -3,7 +3,6 @@
 public class FileLogger : BaseLogger
 {
     
-    public LogType = LogType.File;
     public FileLogger(string className, string filePath)
     {
         ClassName = className;

@@ -1,4 +1,6 @@
-﻿namespace Logger
+﻿using System;
+
+namespace Logger
 {
     public class LogFactory
     {
@@ -21,10 +23,16 @@
             if (type == LogType.File)
             {
                 //method to get filePath
-                filePath = getFilePath();
+                string filePath = getFilePath();
                 return new FileLogger(classNameInitializer, filePath);
             }
+            else return new SomeOtherLogger(classNameInitializer);
 
+        }
+
+        private string getFilePath()
+        {
+            return "LogFile.txt";
         }
     }
 }
