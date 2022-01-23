@@ -7,9 +7,12 @@ namespace Logger.Tests;
 public class LogFactoryTests
 {
     [TestMethod]
-    public void LogFactory_GivenFilePath_ReturnsFileLogger()
+    public void LogFactory_GivenLogType_File_ReturnsFileLogger()
     {
-        LogFactory
+        LogFactory testFactory = new LogFactory("Files", LogType.File);
+
+        // this needs work
+        Assert.IsInstanceOfType(testFactory, typeof(FileLogger));
     }
 }
 

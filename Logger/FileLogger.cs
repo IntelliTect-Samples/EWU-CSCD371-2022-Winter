@@ -2,10 +2,11 @@
 
 public class FileLogger : BaseLogger
 {
-    
+     
     public FileLogger(string className, string filePath)
     {
         ClassName = className;
+        Type = LogType.File;
 
     }
 
