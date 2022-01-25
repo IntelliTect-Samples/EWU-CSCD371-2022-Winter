@@ -4,35 +4,51 @@ namespace Logger
 {
     public class LogFactory
     {
-        private string _className;
-        private LogType _type;
+        public string ClassName;
+        public LogType Type;
+        private string _filePath;
+        public bool IsLogConfigured;
 
         public LogFactory(string className, LogType type)
         {
-            _className = className;
-            _type = type;
+            ClassName = className;
+            Type = type;
+            _filePath = "";
+            IsLogConfigured = false;
         }
 
-        public BaseLogger CreateLogger(string className, LogType type)
+        public BaseLogger? CreateLogger(string className, LogType type)
         {
-            // object initializer
-            // double check how this is done
-            string classNameInitializer = className;
-
+            //If the file logger has not be configured in the LogFactory, its CreateLogger method should return null
+            if (!IsLogConfigured)
+            {
+                return null;
+            }
 
             if (type == LogType.File)
             {
                 //method to get filePath
-                string filePath = getFilePath();
-                return new FileLogger(classNameInitializer, filePath);
+                string filePath = _filePath; // add the path
+                return new FileLogger(className, filePath);
             }
-            else return new SomeOtherLogger(classNameInitializer);
+            else return new SomeOtherLogger(className);// needs cleaner logic for processing other types of logs
 
         }
 
-        private string getFilePath()
+        public string GetFilePath()
         {
-            return "LogFile.txt";
+            return _filePath;
+        }
+
+
+        // This should take in a file path and store it in a private member. It should use
+        // this when instantiating a new FileLogger in its CreateLogger method.
+        // order is: create LogFactory -> configure Factory -> create <Type>logger
+        public string ConfigureFileLogger(string filePath)
+        {
+            _filePath = filePath;
+            IsLogConfigured = true;
+            return filePath;
         }
     }
 }
