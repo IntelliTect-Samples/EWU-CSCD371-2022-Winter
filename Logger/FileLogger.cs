@@ -23,8 +23,7 @@ public class FileLogger : BaseLogger
 
     private string BuildMessageLine(LogLevel logLevel, string message)
     {
-        string fullLine = "";
-        fullLine = string.Format("{0} {1} {2}: {3}", GetFormatedDateTime(), nameof(ClassName), logLevel.ToString(), message);
+        string fullLine = string.Format("{0} {1} {2}: {3}", GetFormatedDateTime(), nameof(ClassName), logLevel.ToString(), message);
 
         return fullLine;
     }
