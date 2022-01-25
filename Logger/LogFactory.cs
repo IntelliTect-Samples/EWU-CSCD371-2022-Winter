@@ -1,24 +1,29 @@
 ﻿namespace Logger
 {
-    public class LogFactory : BaseLogger
+    public class LogFactory
     {
         private string FilePath { get; set; }
 
         public BaseLogger CreateLogger(string className)
         {
-            ClassName = className;
+            if (!string.IsNullOrEmpty(className))
+            {
+                ConfigureFileLogger("Assignment2_Logs.txt");
 
-            return (string.IsNullOrEmpty(FilePath) ? null : new FileLogger(FilePath));
+                BaseLogger baseLogger = new FileLogger(FilePath);
+                baseLogger.ClassName = className;
+
+                return baseLogger;
+            }
+
+            return null;
         }
 
         public void ConfigureFileLogger(string filePath)
         {
             FilePath = filePath;
-        }
 
-        public override void Log(LogLevel logLevel, string message)
-        {
-            throw new System.NotImplementedException();
+            // TODO: Create File here
         }
     }
 }
