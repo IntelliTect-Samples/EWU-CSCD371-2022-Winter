@@ -9,14 +9,14 @@ namespace Logger
         private string _filePath;
         public bool IsLogConfigured;
 
-        public LogFactory(string className, LogType type)
+        public LogFactory(string className)
         {
             ClassName = className;
-            Type = type;
             _filePath = "";
             IsLogConfigured = false;
         }
 
+        // passing in enum (LogType type) for creating different types of loggers. Extra Credit
         public BaseLogger? CreateLogger(string className, LogType type)
         {
             //If the file logger has not be configured in the LogFactory, its CreateLogger method should return null
