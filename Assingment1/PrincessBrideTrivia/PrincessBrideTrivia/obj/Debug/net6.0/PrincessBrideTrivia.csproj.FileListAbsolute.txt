@@ -1,0 +1,16 @@
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\bin\Debug\net6.0\Trivia.txt
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\bin\Debug\net6.0\PrincessBrideTrivia.exe
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\bin\Debug\net6.0\PrincessBrideTrivia.deps.json
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\bin\Debug\net6.0\PrincessBrideTrivia.runtimeconfig.json
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\bin\Debug\net6.0\PrincessBrideTrivia.dll
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\bin\Debug\net6.0\ref\PrincessBrideTrivia.dll
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\bin\Debug\net6.0\PrincessBrideTrivia.pdb
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.csproj.AssemblyReference.cache
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.AssemblyInfoInputs.cache
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.AssemblyInfo.cs
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.csproj.CoreCompileInputs.cache
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.dll
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\ref\PrincessBrideTrivia.dll
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.pdb
+C:\Users\gaven\OneDrive\Documents\git\EWU-CSCD371-2022-Winter\PrincessBrideTrivia\PrincessBrideTrivia\obj\Debug\net6.0\PrincessBrideTrivia.genruntimeconfig.cache

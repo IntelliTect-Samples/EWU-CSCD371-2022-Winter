@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "43e8309c-d064-4743-b038-16f808e98d98": {
+      "ProjectGuid": "43e8309c-d064-4743-b038-16f808e98d98",
+      "DisplayName": "PrincessBrideTrivia",
+      "ColorIndex": 0
+    },
+    "d6c5de8f-993f-4dee-b68e-979620accf37": {
+      "ProjectGuid": "d6c5de8f-993f-4dee-b68e-979620accf37",
+      "DisplayName": "PrincessBrideTrivia.Tests",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

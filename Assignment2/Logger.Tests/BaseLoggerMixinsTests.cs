@@ -14,9 +14,10 @@ namespace Logger.Tests
             // Arrange
 
             // Act
-            //BaseLoggerMixins.Error(null, "");
+            BaseLoggerMixings logger = new(null);
 
             // Assert
+            Assert.ThrowsException<ArgumentNullException>() => BaseLoggerMixins.Error("", logger);
         }
 
         [TestMethod]
