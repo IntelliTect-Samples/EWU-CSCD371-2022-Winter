@@ -2,9 +2,37 @@
 {
     public class LogFactory
     {
-        public BaseLogger? CreateLogger(string className)
+        //wrong needs updating
+
+
+        //used in FileLogger creation | can be null as only FileLogger should need a filePath
+        private string? _FilePath;
+
+
+        public BaseLogger? CreateLogger(string className, string? filePath)
         {
-            return null;
+            //if filePath isn't null (not neccesarily valid)...
+            if (filePath != null)
+            {
+                //run ConfigFileLogger to store filePath as a private member (can be null if not given)
+                ConfigureFileLogger(filePath);
+                
+                //following ConfigFileLogger, create a new FileLogger using object initializer
+                FileLogger fileLogger = new FileLogger(_FilePath)
+                {
+                    Name = className
+                }; //object initializer to edit the class name (requirement 1)
+
+                //return the valid FileLogger object
+                return fileLogger;
+            }
+
+            return null; //(to meet requirement 4)
+        }
+
+        public void ConfigureFileLogger (string filePath) 
+        {
+            _FilePath = filePath;
         }
     }
 }

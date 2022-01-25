@@ -9,7 +9,7 @@ namespace Logger.Tests
         public void FileLogger_IsLoggable()
         {
             FileLogger fileLogger = new FileLogger();
-            fileLogger.Log()
+            //fileLogger.Log()
             Assert.IsNotNull(fileLogger);
 
         }
