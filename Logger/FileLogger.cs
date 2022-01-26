@@ -1,23 +1,30 @@
-﻿namespace Logger;
+﻿
+
+namespace Logger;
 
 public class FileLogger : BaseLogger
 {
-     
+    private string _filePath;
     public FileLogger(string className, string filePath)
     {
         ClassName = className;
-        Type = LogType.File;
+        _filePath = filePath;
 
     }
 
-    // double check implementation for get/set
-    public override string ClassName { get; set; }
 
 
 
     public override void Log(LogLevel logLevel, string message)
     {
-        throw new System.NotImplementedException();
+        //is there a file
+
+        StreamWriter sw = File.AppendText(_filePath);
+#pragma warning disable CA1305 // Specify IFormatProvider
+        sw.WriteLine($"{DateTime.Now.ToString()} {ClassName} {logLevel} {message}");// use nameof() for Classname?
+#pragma warning restore CA1305 // Specify IFormatProvider
+        sw.Close();
+
     }
 }
 

@@ -7,13 +7,29 @@ namespace Logger.Tests;
 public class LogFactoryTests
 {
     [TestMethod]
-    public void LogFactory_GivenLogType_File_ReturnsFileLogger()
+    public void LogFactory_Constructor_ReturnsLogFactoryObject()
     {
-        LogFactory testFactory = new LogFactory("Files", LogType.File);
+        LogFactory testFactory = new LogFactory("Files");
 
-        // this needs work
-        Assert.IsInstanceOfType(testFactory, typeof(FileLogger));
-        Assert.
+        Assert.IsInstanceOfType(testFactory, typeof(LogFactory));
+    }
+
+    [TestMethod]
+    public void LogFactory_ConfigureFileLogger_StoresFilePath()
+    {
+        LogFactory testFactory = new LogFactory("Test");
+        testFactory.ConfigureFileLogger("TestPath");
+
+        Assert.AreEqual("TestPath", testFactory.FilePath);
+    }
+
+    [TestMethod]
+    public void LogFactory_CreateLoggerGivenFileLogger_ReturnsFileLogger()
+    {
+        LogFactory testFactory = new LogFactory("FileLogger");
+        testFactory.ConfigureFileLogger("TestPath");
+        BaseLogger? FileLoggerTest = testFactory.CreateLogger(testFactory.FilePath);
+        Assert.IsInstanceOfType(FileLoggerTest, typeof(FileLogger));
     }
 }
 

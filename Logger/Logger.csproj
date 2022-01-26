@@ -7,6 +7,16 @@
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
 		<LangVersion>10.0</LangVersion>
 		<nullable>enable</nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+
 	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Program.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
 
 </Project>
