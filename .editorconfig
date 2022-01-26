@@ -4,5 +4,3 @@
 # Globalization is not necessary for this project
 dotnet_analyzer_diagnostic.category-Globalization.severity = silent
 
-# IDE0071: Simplify interpolation
-dotnet_diagnostic.IDE0071.severity = none
