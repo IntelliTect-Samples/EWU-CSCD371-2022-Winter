@@ -6,7 +6,12 @@ namespace Logger.Tests;
 [TestClass]
 public class LogFactoryTests
 {
-
+    [TestMethod]
+    public void LogFactory_DefaultFilePath_IsEmpty()
+    {
+        LogFactory testFactory = new LogFactory();
+        Assert.AreEqual("",testFactory.FilePath);
+    }
     [TestMethod]
     public void LogFactory_ConfigureFileLogger_StoresFilePath()
     {
@@ -21,7 +26,7 @@ public class LogFactoryTests
     {
         LogFactory testFactory = new LogFactory();
         testFactory.ConfigureFileLogger("TestPath");
-        BaseLogger? FileLoggerTest = testFactory.CreateLogger(testFactory.FilePath);
+        BaseLogger? FileLoggerTest = testFactory.CreateLogger("FileLogger");
         Assert.IsInstanceOfType(FileLoggerTest, typeof(FileLogger));
     }
 
@@ -31,6 +36,12 @@ public class LogFactoryTests
         LogFactory testFactory = new LogFactory();
         BaseLogger? FileLoggerTest = testFactory.CreateLogger(testFactory.FilePath);
         Assert.IsNull(FileLoggerTest);
+    }
+
+    [TestMethod]
+    public void MyTestMethod()
+    {
+
     }
 }
 
