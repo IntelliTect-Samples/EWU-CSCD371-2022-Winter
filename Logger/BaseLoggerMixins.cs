@@ -4,7 +4,7 @@
     {
         public static void Error(this BaseLogger? logger, string message, params string[] loggerMessage)
         {
-            if (logger == null)
+            if (logger is null)
             {
                 throw new ArgumentNullException();
             }
@@ -14,7 +14,7 @@
       
         public static void Warning(this BaseLogger? logger, string message, params string[] loggerMessage)
         {
-            if (logger == null)
+            if (logger is null)
             {
                 throw new ArgumentNullException();
             }
@@ -25,7 +25,7 @@
 
         public static void Information(this BaseLogger? logger, string message, params string[] loggerMessage)
         {
-            if (logger == null)
+            if (logger is null)
             {
                 throw new ArgumentNullException();
             }
@@ -35,7 +35,7 @@
 
         public static void Debug(this BaseLogger? logger, string message, params string[] loggerMessage)
         {
-            if (logger == null)
+            if (logger is null)
             {
                 throw new ArgumentNullException();
             }
