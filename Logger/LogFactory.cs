@@ -22,8 +22,6 @@
         public void ConfigureFileLogger(string filePath)
         {
             FilePath = filePath;
-
-            // TODO: Create File here
         }
     }
 }
