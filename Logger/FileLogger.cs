@@ -1,32 +1,28 @@
 ﻿using System;
+using System.IO;
+
 namespace Logger
 {
     public class FileLogger : BaseLogger
     {
         private string? _FilePath;
-        //public string? FilePath {  get; set; } 
-/*        public string FilePath
+        public string? FilePath
         {
             get => _FilePath!;
 
             set
             {
-                if (value is null) { throw new ArgumentNullException(nameof(value)); }
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException(
-                        $"{nameof(Name)} cannot be an empty or whitespace.", nameof(value));
-                }
-                _Name = value;
+                if (value == null) { throw new ArgumentNullException(nameof(value)); }
+
+                _FilePath = value;
             }
-        }*/
+        }
 
-
-        public FileLogger(string? filePath) {  }  
+        public FileLogger(string? filePath) { FilePath = filePath; }  
 
         public override void Log(LogLevel logLevel, string message)
         {
-            Console.WriteLine("bingus");
+            //Console.WriteLine("bingus");
         }
 
     }
