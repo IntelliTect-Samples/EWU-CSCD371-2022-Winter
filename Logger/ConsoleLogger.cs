@@ -1,10 +1,10 @@
 ﻿namespace Logger
 {
-    internal class SomeOtherLogger : BaseLogger
+    internal class ConsoleLogger : BaseLogger
     {
         private string classNameInitializer;
 
-        public SomeOtherLogger(string classNameInitializer)
+        public ConsoleLogger(string classNameInitializer)
         {
             this.classNameInitializer = classNameInitializer;
         }
