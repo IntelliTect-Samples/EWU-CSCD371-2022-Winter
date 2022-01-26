@@ -4,14 +4,12 @@ namespace Logger
 {
     public class LogFactory
     {
-        private string ClassName;
         private string _FilePath;
         public string FilePath { get => _FilePath; }
         private bool IsLogConfigured;
 
-        public LogFactory(string className)
+        public LogFactory()
         {
-            ClassName = className;
             _FilePath = "";
             IsLogConfigured = false;
         }
@@ -23,7 +21,7 @@ namespace Logger
                 return null;
             }
 
-            if (ClassName == "FileLogger")
+            if (className == "FileLogger")
             {
                 return new FileLogger(className, FilePath);
             }
