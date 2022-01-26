@@ -21,7 +21,6 @@ namespace Logger.Tests
         {
             FileLogger logger = (FileLogger) exLogFactory.CreateLogger("fileLog1", "C://Egg");
 
-            //Assert.Equals(exLogger.ClassName, logger.ClassName);
             Assert.Equals("C://Egg", logger.FilePath);
         }
         

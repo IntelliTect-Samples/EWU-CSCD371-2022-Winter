@@ -22,7 +22,8 @@ namespace Logger
 
         public override void Log(LogLevel logLevel, string message)
         {
-            //Console.WriteLine("bingus");
+            string logResult = $"{DateTime.Now} {ClassName} {logLevel}: {message} \n";
+            File.AppendAllText(FilePath, logResult);
         }
 
     }
