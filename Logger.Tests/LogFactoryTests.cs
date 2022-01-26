@@ -31,5 +31,13 @@ public class LogFactoryTests
         BaseLogger? FileLoggerTest = testFactory.CreateLogger(testFactory.FilePath);
         Assert.IsInstanceOfType(FileLoggerTest, typeof(FileLogger));
     }
+
+    [TestMethod]
+    public void LogFactory_CreateLoggerWithoutConfugureTrue_ReturnsNull()
+    {
+        LogFactory testFactory = new LogFactory("FileLogger");
+        BaseLogger? FileLoggerTest = testFactory.CreateLogger(testFactory.FilePath);
+        Assert.IsNull(FileLoggerTest);
+    }
 }
 

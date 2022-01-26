@@ -2,11 +2,11 @@
 {
     internal class ConsoleLogger : BaseLogger
     {
-        private string classNameInitializer;
+        private string _className;
 
-        public ConsoleLogger(string classNameInitializer)
+        public ConsoleLogger(string className)
         {
-            this.classNameInitializer = classNameInitializer;
+            this._className = className;
         }
 
         public override void Log(LogLevel logLevel, string message)

@@ -5,6 +5,7 @@ namespace Logger;
 public class FileLogger : BaseLogger
 {
     private string _filePath;
+    public string ClassName;
     public FileLogger(string className, string filePath)
     {
         ClassName = className;
