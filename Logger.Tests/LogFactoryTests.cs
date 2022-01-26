@@ -24,7 +24,7 @@ public class LogFactoryTests
     }
 
     [TestMethod]
-    public void LogFactory_CreateLoggerGivenFileLogger_ReturnsFileLogger()
+    public void LogFactory_CreateLoggerGivenFileLoggerName_ReturnsFileLogger()
     {
         LogFactory testFactory = new LogFactory("FileLogger");
         testFactory.ConfigureFileLogger("TestPath");
