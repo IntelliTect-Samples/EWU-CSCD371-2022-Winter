@@ -6,16 +6,16 @@ namespace Logger
         //wrong needs updating
 
         //used in FileLogger creation | can be null as only FileLogger should need a filePath
-        private string? _FilePath;
+        //private string? _FilePath;
         private string? FilePath
         {
-            get => _FilePath!;
+            get => FilePath!;
 
             set
             {
                 if (value == null) { throw new ArgumentNullException(nameof(value)); }
 
-                _FilePath = value;
+                FilePath = value;
             }
         }
 
@@ -29,7 +29,7 @@ namespace Logger
                 ConfigureFileLogger(filePath);
                 
                 //following ConfigFileLogger, create a new FileLogger using object initializer
-                FileLogger fileLogger = new FileLogger(FilePath)
+                FileLogger fileLogger = new (FilePath)
                 {
                     ClassName = className
                 }; //object initializer to edit the class name (requirement 1)

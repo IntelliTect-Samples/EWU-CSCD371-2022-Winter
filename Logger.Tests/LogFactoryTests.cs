@@ -1,27 +1,27 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
 
 namespace Logger.Tests
 {
     [TestClass]
     public class LogFactoryTests
     {
-        LogFactory exLogFactory; //'example LogFactory
-        FileLogger exLogger; //'example Logger'
+        LogFactory logFactory; 
+        FileLogger fileLogger; 
 
         [TestInitialize]
         public void Initialize()
         {
-            exLogFactory = new LogFactory();
-            exLogger = (FileLogger) exLogFactory.CreateLogger("fileLog", "C://Egg");
+            logFactory = new LogFactory();
         }
 
         [TestMethod]
-        public void ValidInput_MatchesValidFileLogger()
+        public void NonNullFileLogger()
         {
-            FileLogger logger = (FileLogger) exLogFactory.CreateLogger("fileLog1", "C://Egg");
+            fileLogger = (FileLogger) logFactory.CreateLogger("FileLog", "C://Egg");
 
-            Assert.Equals("C://Egg", logger.FilePath);
+            //Assert.IsNotNull(fileLogger);
+            Assert.AreEqual("FileLog", fileLogger.ClassName);
+            
         }
         
     }
