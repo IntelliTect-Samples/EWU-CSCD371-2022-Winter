@@ -2,7 +2,7 @@
 {
     public class LogFactory
     {
-        private string? FilePath { get; }
+        private string? FilePath { get; set; }
 
         public BaseLogger? CreateLogger(string className)
         {
