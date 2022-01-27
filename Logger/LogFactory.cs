@@ -2,14 +2,12 @@
 {
     public class LogFactory
     {
-        private string FilePath { get; set; }
+        private string? FilePath { get; set; }
 
-        public BaseLogger CreateLogger(string className)
+        public BaseLogger? CreateLogger(string className)
         {
-            if (!string.IsNullOrEmpty(className))
+            if (!string.IsNullOrEmpty(className) && FilePath is not null)
             {
-                ConfigureFileLogger("Assignment2_Logs.txt");
-
                 BaseLogger baseLogger = new FileLogger(FilePath);
                 baseLogger.ClassName = className;
 
