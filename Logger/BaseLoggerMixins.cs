@@ -8,7 +8,7 @@
             {
                 throw new ArgumentNullException();
             }
-            string temp = String.Format(message, loggerMessage);
+            string temp = string.Format(message, loggerMessage);
             logger.Log(LogLevel.Error, temp);
         }
       
