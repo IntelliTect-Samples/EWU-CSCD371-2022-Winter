@@ -8,7 +8,7 @@
         {
             ClassName = ClassName;
         }
-        public filelogConfig(string filepath)
+        public ConfigureFileLogger(string filepath)
         {
             FilePath = filepath;
         }
