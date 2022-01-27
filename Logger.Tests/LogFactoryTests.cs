@@ -10,7 +10,7 @@ public class LogFactoryTests
     public void LogFactory_DefaultFilePath_IsEmpty()
     {
         LogFactory testFactory = new LogFactory();
-        Assert.AreEqual("",testFactory.FilePath);
+        Assert.AreEqual("", testFactory.FilePath);
     }
     [TestMethod]
     public void LogFactory_ConfigureFileLogger_StoresFilePath()
@@ -27,6 +27,10 @@ public class LogFactoryTests
         LogFactory testFactory = new LogFactory();
         testFactory.ConfigureFileLogger("TestPath");
         BaseLogger? FileLoggerTest = testFactory.CreateLogger("FileLogger");
+        if (FileLoggerTest != null)
+        {
+            Assert.AreEqual("FileLogger", FileLoggerTest.ClassName);
+        }
         Assert.IsInstanceOfType(FileLoggerTest, typeof(FileLogger));
     }
 
