@@ -26,7 +26,7 @@ namespace Logger
                 return new FileLogger(className, FilePath);
             }
 
-            else return new ConsoleLogger(className);// needs cleaner logic for processing other types of logs
+            else return new ConsoleLogger();
 
         }
 

@@ -3,9 +3,9 @@
     internal class ConsoleLogger : BaseLogger
     {
 
-        public ConsoleLogger(string className)
+        public ConsoleLogger()
         {
-            ClassName = className;
+            ClassName = "ConsoleLogger";
         }
 
         public override void Log(LogLevel logLevel, string message)
