@@ -15,7 +15,7 @@ namespace Logger.Tests
         [TestMethod]
         public void Error_WithData_LogsMessage()
         {
-            var logger = new TestLogger();
+            TestLogger logger = new();
             logger.Error("Message {0}", "42");
             Assert.AreEqual(1, logger.LoggedMessages.Count);
             Assert.AreEqual(LogLevel.Error, logger.LoggedMessages[0].LogLevel);
@@ -32,7 +32,7 @@ namespace Logger.Tests
         [TestMethod]
         public void Warning_WithData_LogsMessage()
         {
-            var logger = new TestLogger();
+            TestLogger logger = new();
             logger.Warning("Message {0}", "42");
             Assert.AreEqual(1, logger.LoggedMessages.Count);
             Assert.AreEqual(LogLevel.Warning, logger.LoggedMessages[0].LogLevel);
@@ -49,7 +49,7 @@ namespace Logger.Tests
         [TestMethod]
         public void Information_WithData_LogsMessage()
         {
-            var logger = new TestLogger();
+            TestLogger logger = new();
             logger.Information("Message {0}", "40");
             Assert.AreEqual(1, logger.LoggedMessages.Count);
             Assert.AreEqual(LogLevel.Information, logger.LoggedMessages[0].LogLevel);
@@ -66,7 +66,7 @@ namespace Logger.Tests
         [TestMethod]
         public void Debug_WithData_LogsMessage()
         {
-            var logger = new TestLogger();
+            TestLogger logger = new();
             logger.Debug("Message {0}", "42");
             Assert.AreEqual(1, logger.LoggedMessages.Count);
             Assert.AreEqual(LogLevel.Debug, logger.LoggedMessages[0].LogLevel);
