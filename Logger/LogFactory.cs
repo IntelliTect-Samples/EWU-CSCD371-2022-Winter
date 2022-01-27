@@ -8,7 +8,7 @@ namespace Logger
         private string _FilePath;
         public string FilePath { get => _FilePath; }
         private bool IsLogConfigured;
-
+        
         public LogFactory(string className)
         {
             ClassName = className;

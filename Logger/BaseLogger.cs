@@ -6,6 +6,5 @@
 
         // There is an existing BaseLogger class. It needs an auto property to hold the class name.
         public string? ClassName { get; set; }
-
     }
 }
