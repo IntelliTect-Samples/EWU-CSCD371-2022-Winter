@@ -13,9 +13,8 @@
 
         public override void Log(LogLevel logLevel, string message)
         {
-            _LogText = ($"{DateTime.Now.ToString()} {nameof(ConsoleLogger)} {logLevel} {message}");
+            _LogText = $"{DateTime.Now} {nameof(ConsoleLogger)} {logLevel} {message}";
             Console.WriteLine(LogText);
         }
-
     }
 }

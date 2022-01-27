@@ -10,7 +10,7 @@ public class ConsoleLoggerTests
     {
         ConsoleLogger testConsoleLogger = new ConsoleLogger();
         testConsoleLogger.Log(LogLevel.Debug, "test message");
-        Assert.AreEqual($"{DateTime.Now.ToString()} ConsoleLogger Debug test message", testConsoleLogger.LogText);
+        Assert.AreEqual($"{DateTime.Now} ConsoleLogger Debug test message", testConsoleLogger.LogText);
     }
 
 }

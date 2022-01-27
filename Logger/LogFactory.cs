@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Logger
 {
     public class LogFactory
@@ -27,7 +26,6 @@ namespace Logger
             }
 
             else return new ConsoleLogger();
-
         }
 
         public void ConfigureFileLogger(string filePath)

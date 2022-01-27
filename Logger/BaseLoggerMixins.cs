@@ -8,18 +8,18 @@
             {
                 throw new ArgumentNullException();
             }
-            string temp = string.Format(message, loggerMessage);
-            logger.Log(LogLevel.Error, temp);
+            string logText = string.Format(message, loggerMessage);
+            logger.Log(LogLevel.Error, logText);
         }
-      
+
         public static void Warning(this BaseLogger? logger, string message, params string[] loggerMessage)
         {
             if (logger is null)
             {
                 throw new ArgumentNullException();
             }
-            string temp = String.Format(message, loggerMessage);
-            logger.Log(LogLevel.Warning, temp);
+            string logText = String.Format(message, loggerMessage);
+            logger.Log(LogLevel.Warning, logText);
 
         }
 
@@ -29,8 +29,8 @@
             {
                 throw new ArgumentNullException();
             }
-            string temp = String.Format(message, loggerMessage);
-            logger.Log(LogLevel.Information, temp);
+            string logText = String.Format(message, loggerMessage);
+            logger.Log(LogLevel.Information, logText);
         }
 
         public static void Debug(this BaseLogger? logger, string message, params string[] loggerMessage)
@@ -39,8 +39,8 @@
             {
                 throw new ArgumentNullException();
             }
-            string temp = String.Format(message, loggerMessage);
-            logger.Log(LogLevel.Debug, temp);
+            string logText = String.Format(message, loggerMessage);
+            logger.Log(LogLevel.Debug, logText);
         }
 
     }
