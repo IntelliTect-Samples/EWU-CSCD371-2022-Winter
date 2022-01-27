@@ -11,5 +11,7 @@ namespace Logger.Tests
             FileLogger logger = new("NonNullFileLogger.txt");
             Assert.IsNotNull(logger);
         }
+
+        //TODO: add test to check actual file contents
     }
 }
