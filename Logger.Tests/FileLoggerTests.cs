@@ -7,7 +7,7 @@ public class FileLoggerTests
     [TestMethod]
     public void FileLogger_LogGivenMessage_CreatesLogString()
     {
-        FileLogger testFileLogger = new FileLogger("FileLogger", "testpath");
+        FileLogger testFileLogger = new(nameof(FileLogger), "testpath");
         testFileLogger.Log(LogLevel.Debug, "test message");
         Assert.AreEqual($"{DateTime.Now} FileLogger Debug test message", testFileLogger.LogText);
     }

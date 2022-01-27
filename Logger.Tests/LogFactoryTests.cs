@@ -8,13 +8,13 @@ public class LogFactoryTests
     [TestMethod]
     public void LogFactory_DefaultFilePath_IsEmpty()
     {
-        LogFactory testFactory = new LogFactory();
+        LogFactory testFactory = new();
         Assert.AreEqual("", testFactory.FilePath);
     }
     [TestMethod]
     public void LogFactory_ConfigureFileLogger_StoresFilePath()
     {
-        LogFactory testFactory = new LogFactory();
+        LogFactory testFactory = new();
         testFactory.ConfigureFileLogger("TestPath");
 
         Assert.AreEqual("TestPath", testFactory.FilePath);
@@ -23,7 +23,7 @@ public class LogFactoryTests
     [TestMethod]
     public void LogFactory_CreateFileLoggerGivenFileLoggerName_ReturnsFileLogger()
     {
-        LogFactory testFactory = new LogFactory();
+        LogFactory testFactory = new();
         testFactory.ConfigureFileLogger("TestPath");
         BaseLogger? FileLoggerTest = testFactory.CreateLogger("FileLogger");
         if (FileLoggerTest != null)
@@ -36,7 +36,7 @@ public class LogFactoryTests
     [TestMethod]
     public void LogFactory_CreateLoggerWithoutConfugureTrue_ReturnsNull()
     {
-        LogFactory testFactory = new LogFactory();
+        LogFactory testFactory = new();
         BaseLogger? FileLoggerTest = testFactory.CreateLogger(testFactory.FilePath);
         Assert.IsNull(FileLoggerTest);
     }
@@ -44,7 +44,7 @@ public class LogFactoryTests
     [TestMethod]
     public void LogFactory_NotGivenFileLoggerName_ReturnsConsoleLogger()
     {
-        LogFactory testFactory = new LogFactory();
+        LogFactory testFactory = new();
         testFactory.ConfigureFileLogger("TestPath");
         BaseLogger? ConsoleLoggerTest = testFactory.CreateLogger("");
         Assert.IsInstanceOfType(ConsoleLoggerTest, typeof(ConsoleLogger));
