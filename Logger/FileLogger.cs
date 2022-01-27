@@ -6,7 +6,7 @@ public class FileLogger : BaseLogger
 {
     private readonly string filePath;
     private string? _LogText;
-    public string? LogText { get { return _LogText; } }
+    public string? LogText => _LogText;
     public FileLogger(string className, string path)
     {
         ClassName = className;

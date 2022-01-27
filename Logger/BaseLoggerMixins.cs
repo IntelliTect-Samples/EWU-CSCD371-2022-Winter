@@ -18,7 +18,7 @@
             {
                 throw new ArgumentNullException("BaseLogger cannot be null", nameof(BaseLoggerMixins));
             }
-            string logText = String.Format(message, loggerMessage);
+            string logText = string.Format(message, loggerMessage);
             logger.Log(LogLevel.Warning, logText);
 
         }
@@ -29,7 +29,7 @@
             {
                 throw new ArgumentNullException("BaseLogger cannot be null", nameof(BaseLoggerMixins));
             }
-            string logText = String.Format(message, loggerMessage);
+            string logText = string.Format(message, loggerMessage);
             logger.Log(LogLevel.Information, logText);
         }
 
@@ -39,7 +39,7 @@
             {
                 throw new ArgumentNullException("BaseLogger cannot be null", nameof(BaseLoggerMixins));
             }
-            string logText = String.Format(message, loggerMessage);
+            string logText = string.Format(message, loggerMessage);
             logger.Log(LogLevel.Debug, logText);
         }
 
