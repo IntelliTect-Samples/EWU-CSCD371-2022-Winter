@@ -43,9 +43,12 @@ public class LogFactoryTests
     }
 
     [TestMethod]
-    public void MyTestMethod()
+    public void LogFactory_NotGivenFileLoggerName_ReturnsConsoleLogger()
     {
-
+        LogFactory testFactory = new LogFactory();
+        testFactory.ConfigureFileLogger("TestPath");
+        BaseLogger? ConsoleLoggerTest = testFactory.CreateLogger("");
+        Assert.IsInstanceOfType(ConsoleLoggerTest, typeof(ConsoleLogger));
     }
 }
 

@@ -1,17 +1,21 @@
 ﻿namespace Logger
 {
-    internal class ConsoleLogger : BaseLogger
+    public class ConsoleLogger : BaseLogger
     {
+        private string? _LogText;
+        public string? LogText { get { return _LogText; } }
 
         public ConsoleLogger()
         {
             ClassName = "ConsoleLogger";
+            _LogText = "";
         }
 
         public override void Log(LogLevel logLevel, string message)
         {
-            string logText = ($"{DateTime.Now.ToString()} {nameof(ClassName)} {logLevel} {message}");
-
+            _LogText = ($"{DateTime.Now.ToString()} {nameof(ConsoleLogger)} {logLevel} {message}");
+            Console.WriteLine(LogText);
         }
+
     }
 }
