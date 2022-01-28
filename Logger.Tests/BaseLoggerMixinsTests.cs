@@ -57,7 +57,7 @@ namespace Logger.Tests
 
             // Assert
             Assert.AreEqual(1, logger.LoggedMessages.Count);
-            Assert.AreEqual(LogLevel.Error, logger.LoggedMessages[0].LogLevel);
+            Assert.AreEqual(LogLevel.Warning, logger.LoggedMessages[0].LogLevel);
             Assert.AreEqual("Message 2002", logger.LoggedMessages[0].Message);
         }
 
@@ -84,7 +84,7 @@ namespace Logger.Tests
 
             // Assert
             Assert.AreEqual(1, logger.LoggedMessages.Count);
-            Assert.AreEqual(LogLevel.Error, logger.LoggedMessages[0].LogLevel);
+            Assert.AreEqual(LogLevel.Information, logger.LoggedMessages[0].LogLevel);
             Assert.AreEqual("Message 1994", logger.LoggedMessages[0].Message);
         }
 
@@ -111,7 +111,7 @@ namespace Logger.Tests
 
             // Assert
             Assert.AreEqual(1, logger.LoggedMessages.Count);
-            Assert.AreEqual(LogLevel.Error, logger.LoggedMessages[0].LogLevel);
+            Assert.AreEqual(LogLevel.Debug, logger.LoggedMessages[0].LogLevel);
             Assert.AreEqual("Message 1970", logger.LoggedMessages[0].Message);
         }
     }

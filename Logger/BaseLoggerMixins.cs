@@ -41,7 +41,7 @@ namespace Logger
         {
             message = string.IsNullOrEmpty(message) ? "" : message;
             string joinedArgs = messageArgs is null ? "" : string.Join(" ", messageArgs.Select(x => x.ToString()));
-            string messageWithArgs = $"{message} {joinedArgs}";
+            string messageWithArgs = string.Format(message, joinedArgs);
 
             return messageWithArgs;
         }
