@@ -14,6 +14,11 @@
     <PackageReference Include="coverlet.collector" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	<Nullable>enable</Nullable>
+	<LangVersion>10.0</LangVersion>
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
     </PackageReference>
   </ItemGroup>
 
