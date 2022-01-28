@@ -15,7 +15,7 @@ public class FileLogger : BaseLogger
     {
         string newLogLine = BuildMessageLine(logLevel, message);
 
-        if (string.IsNullOrEmpty(newLogLine))
+        if (!string.IsNullOrEmpty(newLogLine))
         {
             File.AppendAllText(FilePath, newLogLine);
         }
@@ -34,5 +34,10 @@ public class FileLogger : BaseLogger
         string cultureName = "en-US";
 
         return localDate.ToString(cultureName);
+    }
+
+    public string GetFilePath()
+    {
+        return FilePath;
     }
 }
