@@ -16,7 +16,7 @@ namespace Logger.Tests
         }
 
         [TestMethod]
-        public void ValidFileLogger_IsNotNull()
+        public void ValidFileLogger_IsLoggable()
         {
             fileLogger = (FileLogger) logFactory.CreateLogger("FileLog", "C://Egg");
             Assert.IsNotNull(fileLogger);

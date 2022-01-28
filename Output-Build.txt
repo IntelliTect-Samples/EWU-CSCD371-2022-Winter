@@ -1,0 +1,7 @@
+﻿Build started...
+1>------ Build started: Project: Logger, Configuration: Debug Any CPU ------
+1>Logger -> C:\Users\Admin\OneDrive\Documents\Cscd371\Assi2\Logger\bin\Debug\netstandard2.0\Logger.dll
+2>------ Build started: Project: Logger.Tests, Configuration: Debug Any CPU ------
+2>Skipping analyzers to speed up the build. You can execute 'Build' or 'Rebuild' command to run analyzers.
+2>Logger.Tests -> C:\Users\Admin\OneDrive\Documents\Cscd371\Assi2\Logger.Tests\bin\Debug\net6.0\Logger.Tests.dll
+========== Build: 2 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

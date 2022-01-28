@@ -5,11 +5,10 @@ namespace Logger
 {
     public class FileLogger : BaseLogger
     {
-
         private string? _FilePath;
         public string? FilePath
         {
-            get => _FilePath;
+            get => _FilePath!;
 
             set
             {
@@ -26,6 +25,5 @@ namespace Logger
             string logResult = $"{DateTime.Now} {ClassName} {logLevel}: {message} \n";
             File.AppendAllText(FilePath, logResult);
         }
-
     }
 }

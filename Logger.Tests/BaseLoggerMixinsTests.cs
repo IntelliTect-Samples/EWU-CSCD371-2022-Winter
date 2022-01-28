@@ -21,6 +21,46 @@ namespace Logger.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Information_WithNullLogger_ThrowsException()
+        {
+            // Arrange
+
+            // Act
+            BaseLoggerMixins.Information(null, "");
+
+            // Assert
+            //Assert.ThrowsException<ArgumentNullException>();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Warning_WithNullLogger_ThrowsException()
+        {
+            // Arrange
+
+            // Act
+            BaseLoggerMixins.Warning(null, "");
+
+            // Assert
+            //Assert.ThrowsException<ArgumentNullException>();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Debug_WithNullLogger_ThrowsException()
+        {
+            // Arrange
+
+            // Act
+            BaseLoggerMixins.Debug(null, "");
+
+            // Assert
+            //Assert.ThrowsException<ArgumentNullException>();
+        }
+
+
+        [TestMethod]
         public void Error_WithData_LogsMessage()
         {
             // Arrange

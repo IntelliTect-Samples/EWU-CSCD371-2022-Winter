@@ -52,7 +52,5 @@ namespace Logger
 
             logger.Log(LogLevel.Debug, messageWithArgs);
         }
-
-
     }
 }
