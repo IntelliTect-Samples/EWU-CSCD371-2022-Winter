@@ -1,14 +1,17 @@
-﻿namespace Logger
+﻿using System;
+using System.IO;
+
+namespace Logger
 {
     public class LogFactory
     {
-        private string classname;
-        private string filepath;
+        private string? filepath { get; set; }
 
-        public BaseLogger CreateLogger(string className)
+        public BaseLogger? CreateLogger(string className)
         {
-            
-            classname = className;
+            if (filepath != null)
+                return new FileLogger(className,filepath);
+            return null;
         }
 
         public void ConfigureFileLogger(string filePath)
