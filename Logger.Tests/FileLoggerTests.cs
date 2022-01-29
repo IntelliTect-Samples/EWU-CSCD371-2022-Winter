@@ -12,7 +12,7 @@ namespace Logger.Tests
         {
             FileLogger logger = new("NonNullFileLogger.txt");
             logger.ClassName = this.GetType().Name;
-            Assert.IsNotNull(logger);            
+            Assert.IsNotNull(logger);
         }
 
         [TestMethod]
@@ -27,7 +27,46 @@ namespace Logger.Tests
         [TestMethod]
         public void FileContentMatches()
         {
-            //TODO: add test to check actual file contents   
+            string testFilePath = "FileLogger2.txt";
+            string[] testMessages = new[]
+            {
+                "Some first Warning TestMessage 1st",
+                "Some second Warning TestMessage 2nd",
+                "Some third Warning TestMessage 3rd",
+                "Some forth Warning TestMessage 4th"
+            };
+
+            FileLogger logger = new(testFilePath);
+            logger.ClassName = this.GetType().Name;
+
+            foreach (string msg in testMessages)
+            {
+                logger.Log(LogLevel.Warning, msg);
+            }
+
+
+            if (File.Exists(testFilePath))
+            {
+                try
+                {
+                    string[] fileMessages = File.ReadAllLines(testFilePath);
+
+                    for (int i = 0; i < fileMessages.Length; i++)
+                    {
+                        StringAssert.Equals(fileMessages[i], testMessages[i]);
+                    }
+
+                }
+                catch (FileLoadException)
+                {
+                    throw new FileLoadException($"The Contents of file: {testFilePath} could not be loaded!");
+                }
+
+            }
+            else
+            {
+                throw new FileNotFoundException($"The file: {testFilePath} was not found!");
+            }
         }
     }
 }
