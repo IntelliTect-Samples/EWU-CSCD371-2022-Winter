@@ -57,9 +57,9 @@ namespace Logger.Tests
                     }
 
                 }
-                catch (FileLoadException)
+                catch (InvalidOperationException)
                 {
-                    throw new FileLoadException($"The Contents of file: {testFilePath} could not be loaded!");
+                    throw;
                 }
 
             }
