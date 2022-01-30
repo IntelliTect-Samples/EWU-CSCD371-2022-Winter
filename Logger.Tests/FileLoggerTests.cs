@@ -44,7 +44,6 @@ namespace Logger.Tests
                 logger.Log(LogLevel.Warning, msg);
             }
 
-
             if (File.Exists(testFilePath))
             {
                 try
@@ -59,9 +58,9 @@ namespace Logger.Tests
                 }
                 catch (InvalidOperationException)
                 {
+                    Console.WriteLine($"The Contents of file: {testFilePath} could not be loaded!");
                     throw;
                 }
-
             }
             else
             {
