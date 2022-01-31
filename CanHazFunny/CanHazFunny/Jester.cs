@@ -50,6 +50,7 @@ namespace CanHazFunny
             }
 
             _displayService.Display(validatedJoke);
+            _displayService.Display($"jokeCount: {jokeCount}");
 
         }
     }
