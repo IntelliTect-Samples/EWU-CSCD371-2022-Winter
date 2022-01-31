@@ -1,10 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CanHazFunny.Tests
+namespace CanHazFunny.Tests;
+[TestClass]
+public class JesterTests
 {
-    [TestClass]
-    public class JesterTests
-    {
-        
-    }
+
 }
+
