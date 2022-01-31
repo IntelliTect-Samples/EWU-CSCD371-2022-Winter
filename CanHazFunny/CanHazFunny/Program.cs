@@ -8,9 +8,11 @@
             //new Jester(new SomeReallyCoolOutputClass(), new SomeJokeServiceClass()).TellJoke();
 
             //temp code - this actually returns a string that is a "joke". May have to edit some firewall settings to get it to work however
-            JokeService jokeService = new JokeService();
-            string jokeExample = jokeService.GetJoke();
-            Console.WriteLine(jokeExample);
+            //JokeService jokeService = new JokeService();
+            //string jokeExample = jokeService.GetJoke();
+            //Console.WriteLine(jokeExample);
+
+            new Jester(new DisplayService(), new JokeService()).TellJoke();
         }
     }
 }
