@@ -6,9 +6,10 @@ namespace CanHazFunny.Tests
     [TestClass]
     public class JesterTests
     {
-        private JokeService _jokeService;
-        private PrintService _printService;
-        private Jester _jester;
+        private JokeService? _jokeService;
+        private PrintService? _printService;
+        private Jester? _jester;
+        private string? _joke;
 
 
         [TestInitialize]
@@ -22,7 +23,7 @@ namespace CanHazFunny.Tests
         [TestMethod]
         public void ValidJokeService_GetJoke_ReturnsNonNull()
         {
-            string joke = _jokeService.GetJoke();  
+            string joke = _jokeService!.GetJoke();  
             Assert.IsNotNull(joke);
         }
 
@@ -30,7 +31,7 @@ namespace CanHazFunny.Tests
         [TestMethod]
         public void ValidJokeServiceAndPrintSercive_ReturnsNonNullJester()
         {
-            _jester = new Jester(_jokeService, _printService);
+            _jester = new Jester(_jokeService!, _printService!);
 
             Assert.IsNotNull(_jester);
         }
@@ -40,7 +41,7 @@ namespace CanHazFunny.Tests
         [ExpectedException(typeof(ArgumentNullException))]
         public void NullJokeService_ExpectedNULLException_JesterCreation()
         {
-            _jester = new Jester(null, _printService);
+            _jester = new Jester(null!, _printService!);
         }
 
 
@@ -48,7 +49,7 @@ namespace CanHazFunny.Tests
         [ExpectedException(typeof(ArgumentNullException))]
         public void NullPrintService_ExpectedNULLException_JesterCreation()
         {
-            _jester = new Jester(_jokeService, null);
+            _jester = new Jester(_jokeService!, null!);
         }
 
 
@@ -57,15 +58,14 @@ namespace CanHazFunny.Tests
         {
             //the code below is an exact copy of Jester.TellJoke method
             //this TestMethod is meant to make sure this Jester.TellJoke method is working properly
-            string joke = "Chuck Norris"; //purposefully bad
-
+            //string joke = "Chuck Norris"; //purposefully bad
             do
             {
-                joke = _jokeService.GetJoke();
+                _joke = _jokeService!.GetJoke();
             }
-            while (joke.Contains("Chuck Norris", StringComparison.OrdinalIgnoreCase));
+            while (_joke.Contains("Chuck Norris", StringComparison.OrdinalIgnoreCase));
 
-            Assert.IsFalse(joke.Contains("Chuck Norris"));
+            Assert.IsFalse(_joke.Contains("Chuck Norris"));
         }
     }
 }
