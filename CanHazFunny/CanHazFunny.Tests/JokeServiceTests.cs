@@ -10,26 +10,26 @@ namespace CanHazFunny.Tests
     [TestClass]
     public class JokeServiceTests
     {
-        JokeService? jokeService;
-        string fakeUrl = @"https://fakewebsite.edu";
+        JokeService? _JokeService;
+        string _FakeUrl = @"https://fakewebsite.edu";
 
         [TestInitialize]
         public void TestInit()
         {
-            jokeService = new();
+            _JokeService = new();
 
         }
         [TestMethod]
         public void SetupService_StoresURL()
         {
-            jokeService?.SetupService(fakeUrl);
-            Assert.AreEqual<string>(fakeUrl, jokeService?.URL!);
+            _JokeService?.SetupService(_FakeUrl);
+            Assert.AreEqual<string>(_FakeUrl, _JokeService?.URL!);
         }
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void GetJoke_ExceptionWhenNotSetup()
         {
-            jokeService?.GetJoke();
+            _JokeService?.GetJoke();
         }
 
 
@@ -37,8 +37,8 @@ namespace CanHazFunny.Tests
         public void GetJoke_ReturnsStringGivenAPI()
         {
             string apiUrl = @"https://geek-jokes.sameerkumar.website/api";
-            jokeService?.SetupService(apiUrl);
-            Assert.IsNotNull(jokeService?.GetJoke());
+            _JokeService?.SetupService(apiUrl);
+            Assert.IsNotNull(_JokeService?.GetJoke());
         }
 
     }

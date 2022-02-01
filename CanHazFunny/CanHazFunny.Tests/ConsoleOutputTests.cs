@@ -12,11 +12,10 @@ namespace CanHazFunny.Tests
     public class ConsoleOutputTests
     {
 
-
        [TestMethod]
        public void Output_PrintsString()
         {
-            StringWriter consoleOut = new();
+            StringWriter consoleOut = new();    
             Console.SetOut(consoleOut);
 
             ConsoleOutput stringOut = new();
@@ -26,6 +25,9 @@ namespace CanHazFunny.Tests
             stringOut.Output(printString);
 
             Assert.AreEqual<string>(consoleOut.ToString(), (printString + Environment.NewLine));
+
+
+            consoleOut.Dispose();
             
 
 

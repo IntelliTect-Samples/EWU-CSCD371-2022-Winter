@@ -4,27 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CanHazFunny
 {
-    class Jester
+    public class Jester
     {
-        public Jester(IServiceable inputService,IOutputtable outputDevice)
+        public Jester(IServiceable inputService,IOutputtable outputService)
         {
-            InputService = inputService ?? throw new ArgumentNullException("Input Service object is null");
-            OutputDevice = outputDevice ?? throw new ArgumentNullException("Output Service object is null");
+            InputService = inputService ?? throw new ArgumentNullException(nameof(inputService) + " object is null");
+            OutputService = outputService ?? throw new ArgumentNullException(nameof(outputService) + " object is null");
         }
 
         private IServiceable InputService { get; }
-        private IOutputtable OutputDevice { get; }
+        private IOutputtable OutputService { get; }
 
         public void TellJoke()
         {
+            string joke = new("");
+            do
+            {
+                joke = InputService.GetJoke();
 
+            } while (!IsJokeGood(joke));
+
+            OutputService.Output(joke);
         }
 
-        private bool? CheckJoke(string joke)
+        private bool IsJokeGood(string joke)
         {
-            return null;
+            if (joke.Contains("Chuck Norris")) { return false; }
+
+            return true;
         }
     }
 }
