@@ -5,8 +5,9 @@ namespace CanHazFunny
     public class JokeService :IServiceable
     {
 
-        private string? URL { get; set; }
+        public string? URL { get; private set; }
         private HttpClient HttpClient { get; } = new();
+
 
         public string GetJoke()
         {
@@ -14,9 +15,9 @@ namespace CanHazFunny
             return joke;
         }
 
-        public void GetService(string serviceAcsess)
+        public void SetupService(string serviceAccess)
         {
-            URL = serviceAcsess;
+            URL = serviceAccess;
         }
     }
 }

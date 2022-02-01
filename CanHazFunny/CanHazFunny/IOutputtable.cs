@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CanHazFunny
 {
-    interface IOutputtable
+    public interface IOutputtable
     {
         public void Output(string message);
     }

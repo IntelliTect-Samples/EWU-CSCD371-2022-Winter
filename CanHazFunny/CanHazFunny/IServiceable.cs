@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CanHazFunny
 {
-    interface IServiceable
+    public interface IServiceable
     {
-        public void GetService(string serviceAcsess);
+        public void SetupService(string serviceAcsess);
         public string GetJoke();
     }
 }

@@ -8,14 +8,23 @@ namespace CanHazFunny
 {
     class Jester
     {
-        public Jester(IOutputtable outputDevice, IServiceable inputService)
+        public Jester(IServiceable inputService,IOutputtable outputDevice)
         {
-           OutputDevice = outputDevice;
-           InputService = inputService;
+            InputService = inputService ?? throw new ArgumentNullException("Input Service object is null");
+            OutputDevice = outputDevice ?? throw new ArgumentNullException("Output Service object is null");
         }
 
-        private IOutputtable OutputDevice { get; }
         private IServiceable InputService { get; }
+        private IOutputtable OutputDevice { get; }
 
+        public void TellJoke()
+        {
+
+        }
+
+        private bool? CheckJoke(string joke)
+        {
+            return null;
+        }
     }
 }
