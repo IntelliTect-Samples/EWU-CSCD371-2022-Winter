@@ -6,7 +6,7 @@ namespace CanHazFunny
     {
 
         public string? URL { get; private set; }
-        private HttpClient HttpClient { get; } = new();
+        protected HttpClient HttpClient { get; } = new();
 
 
         public string GetJoke()

@@ -26,11 +26,8 @@ namespace CanHazFunny.Tests
 
             Assert.AreEqual<string>(consoleOut.ToString(), (printString + Environment.NewLine));
 
-
             consoleOut.Dispose();
             
-
-
         }
     }
 }

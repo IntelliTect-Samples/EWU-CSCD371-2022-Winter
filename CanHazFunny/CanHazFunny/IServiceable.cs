@@ -8,7 +8,7 @@ namespace CanHazFunny
 {
     public interface IServiceable
     {
-        public void SetupService(string serviceAcsess);
+        public void SetupService(string serviceAccess);
         public string GetJoke();
     }
 }
