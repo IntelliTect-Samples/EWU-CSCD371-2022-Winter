@@ -9,22 +9,25 @@ namespace CanHazFunny
     public class Jester
     {
         // Implement the Jester class. It should take in both interfaces as dependencies.
-        // These dependencies should be null checked.
-        private readonly DisplayService _displayService;
-        private readonly JokeService _jokeService;
+        // These dependencies should be null checked
 
-        public Jester(DisplayService? displayService, JokeService? jokeService)
+        private readonly IJokeService _jokeService;
+        private readonly IConsoleDisplay _consoleDisplay;
+
+       
+        public Jester(IConsoleDisplay output, IJokeService service )
+
         {
-            if (displayService == null)
+            if (service == null)
             {
-                throw new ArgumentNullException(nameof(displayService)); // verify this is the right way to check
+                throw new ArgumentNullException(nameof(service)); // verify this is the right way to check
             }
-            if (jokeService == null)
+            if (output == null)
             {
-                throw new ArgumentNullException(nameof(jokeService)); // verify this is the right way to check
+                throw new ArgumentNullException(nameof(output)); // verify this is the right way to check
             }
-            _displayService = displayService;
-            _jokeService = jokeService;
+            _consoleDisplay = output;
+            _jokeService = service;
         }
 
         // The Jester class TellJoke() method should retrieve a joke from the JokeService.
@@ -33,25 +36,24 @@ namespace CanHazFunny
 
         public void TellJoke()
         {
-            // loop to get non chuck norrris joke
-            string validatedJoke = "";
-            bool jokeIsValid = false;
-
-            int jokeCount = 0; // for testing purposes only
-            while (!jokeIsValid)
-            {
-                jokeCount++; // for testing purposes only 
-                string unvalidatedJoke = _jokeService.GetJoke();
-                if (!unvalidatedJoke.Contains("Chuck Norris"))
-                {
-                    validatedJoke = unvalidatedJoke;
-                    jokeIsValid = true;
-                }
+            string withoutChuckNorris = _jokeService.GetJoke();
+            while(withoutChuckNorris.Contains("Chuck Norris")){
+                withoutChuckNorris = _jokeService.GetJoke();
             }
-
-            _displayService.Display(validatedJoke);
-            _displayService.Display($"jokeCount: {jokeCount}");
+            _consoleDisplay.Display(withoutChuckNorris);
 
         }
+
+        public void IsJson()
+        {
+            string input = _jokeService.GetJoke().Trim();
+            if(input.StartsWith("{") && input.EndsWith("}") || input.StartsWith("[") && input.EndsWith("]")){
+                Console.WriteLine("This is JSON.");
+            }else
+            {
+                Console.WriteLine("This is XML.");
+            }
+        }
+    
     }
 }
