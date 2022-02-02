@@ -21,24 +21,31 @@ public class JokeService : IJokeService
         return "An Error Occured";
     }
 
-    public void IsJson(string text)
+    //public void IsJson(string text)
+    //{
+    //    string input = text.Trim();
+    //    if (input.StartsWith("{") && input.EndsWith("}") || input.StartsWith("[") && input.EndsWith("]"))
+    //    {
+    //        Console.WriteLine("This is JSON.");
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine("This is XML.");
+    //    }
+    //}
+
+    public bool TextFormatIsJson(string text)
     {
-        string input = text.Trim();
-        if (input.StartsWith("{") && input.EndsWith("}") || input.StartsWith("[") && input.EndsWith("]"))
-        {
-            Console.WriteLine("This is JSON.");
-        }
+        if (text.StartsWith("{") && text.EndsWith("}"))
+            return true;
         else
-        {
-            Console.WriteLine("This is XML.");
-        }
+            return false;
     }
 
 
-    //take json and remove the formatting
+
     private static string JsonFormatStrip(string jsonString)
     {
-        //{"joke": "windows isn\u2019t a virus atleast viruses do something."}
         string strippedstring = jsonString.Remove(0, 10);
         int index = strippedstring.Length;
         strippedstring = strippedstring.Remove(index - 3, 3);
