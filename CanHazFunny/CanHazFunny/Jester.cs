@@ -14,15 +14,13 @@ namespace CanHazFunny
         private readonly IJokeService _jokeService;
         private readonly IConsoleDisplay _consoleDisplay;
 
-       
-        public Jester(IConsoleDisplay output, IJokeService service )
-
+        public Jester(IConsoleDisplay? output, IJokeService? service)
         {
-            if (service == null)
+            if (service is null)
             {
                 throw new ArgumentNullException(nameof(service)); // verify this is the right way to check
             }
-            if (output == null)
+            if (output is null)
             {
                 throw new ArgumentNullException(nameof(output)); // verify this is the right way to check
             }
@@ -36,24 +34,18 @@ namespace CanHazFunny
 
         public void TellJoke()
         {
-            string withoutChuckNorris = _jokeService.GetJoke();
-            while(withoutChuckNorris.Contains("Chuck Norris")){
-                withoutChuckNorris = _jokeService.GetJoke();
-            }
-            _consoleDisplay.Display(withoutChuckNorris);
-
-        }
-
-        public void IsJson()
-        {
-            string input = _jokeService.GetJoke().Trim();
-            if(input.StartsWith("{") && input.EndsWith("}") || input.StartsWith("[") && input.EndsWith("]")){
-                Console.WriteLine("This is JSON.");
-            }else
+            string validFormat = _jokeService.GetJoke();
+            while (
+                validFormat.ToLower().Contains("chuck") ||
+                validFormat.ToLower().Contains("norris") ||
+                validFormat.Contains("\\u"))
             {
-                Console.WriteLine("This is XML.");
+                validFormat = _jokeService.GetJoke();
             }
+            _consoleDisplay.Display(validFormat);
+
         }
-    
+        //{"joke": "No statement can catch the ChuckNorrisException."}
+
     }
 }

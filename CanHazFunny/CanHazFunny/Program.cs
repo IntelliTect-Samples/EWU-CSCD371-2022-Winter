@@ -12,10 +12,16 @@
             //string jokeExample = jokeService.GetJoke();
             //Console.WriteLine(jokeExample);
 
-            
-            new Jester(new DisplayService(), new JokeService()).TellJoke();
-            new Jester(new DisplayService(), new JokeService()).IsJson();
+            //for (int x = 0; x < 10; x++)
+            //{
+            //    new Jester(new DisplayService(), new JokeService()).TellJoke();
+            //    new Jester(new DisplayService(), new JokeService()).IsJson();
+            //}
 
+            for (int x = 0; x < 10; x++)
+            {
+                new Jester(new DisplayService(), new JokeService()).TellJoke();
+            }
         }
     }
 }
