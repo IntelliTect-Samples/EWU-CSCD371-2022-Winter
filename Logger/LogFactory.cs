@@ -1,4 +1,4 @@
-﻿namespace Logger
+namespace Logger
 {
     public class LogFactory
     {
@@ -8,4 +8,4 @@
             return null;
         }
     }
-}
+}//comment
