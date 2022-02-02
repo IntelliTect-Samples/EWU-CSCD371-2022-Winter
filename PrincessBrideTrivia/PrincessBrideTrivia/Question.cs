@@ -1,4 +1,4 @@
-﻿namespace PrincessBrideTrivia
+namespace PrincessBrideTrivia
 {
     public class Question
     {
@@ -6,4 +6,4 @@
         public string[] Answers;
         public string CorrectAnswerIndex;
     }
-}
+}//Hi there buddy
