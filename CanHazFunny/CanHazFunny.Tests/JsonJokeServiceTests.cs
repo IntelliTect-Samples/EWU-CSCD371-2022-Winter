@@ -9,7 +9,7 @@ using System.Text.Json;
 namespace CanHazFunny.Tests
 {
     [TestClass]
-    public class JSONJokeService
+    public class JsonJokeServiceTests
     {
         [TestMethod]
         public void GetJoke_ProperlyDeserializesJSON()
