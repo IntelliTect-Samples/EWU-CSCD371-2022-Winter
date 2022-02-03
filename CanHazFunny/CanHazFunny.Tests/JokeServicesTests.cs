@@ -15,6 +15,7 @@ namespace CanHazFunny.Tests
         {
             JokeService jokeService = new JokeService();
             Assert.IsNotNull(jokeService.GetJoke());
+            Assert.IsInstanceOfType(jokeService.GetJoke(), typeof(string));
         }
     }
 }

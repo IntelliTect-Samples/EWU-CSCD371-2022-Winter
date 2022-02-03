@@ -49,9 +49,6 @@ public class JesterTests
         StringWriter output = new();
         Console.SetOut(output);
 
-        StringReader input = new("stringReader");
-        Console.SetIn(input);
-
         jester.TellJoke();
         //Jester.Main(new string[] { });
 
