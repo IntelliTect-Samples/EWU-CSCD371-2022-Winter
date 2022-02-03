@@ -57,8 +57,7 @@ namespace CanHazFunny.Tests
         public void CheckJokeString_DoesNotContain_ChuckNorris()
         {
             //the code below is an exact copy of Jester.TellJoke method
-            //this TestMethod is meant to make sure this Jester.TellJoke method is working properly
-            //string joke = "Chuck Norris"; //purposefully bad
+            //this TestMethod is meant to ensure Jester.TellJoke is working properly
             do
             {
                 _joke = _jokeService!.GetJoke();
