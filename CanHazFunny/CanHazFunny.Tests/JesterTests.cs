@@ -38,5 +38,29 @@ public class JesterTests
  
     }
 
+    [TestMethod]
+    public void TellJoke_ReturnsString_WithChuckNorris_IsFalse()
+    {
+        Jester jester = new Jester(new DisplayService(), new JokeService());
+
+        StringWriter output = new();
+        Console.SetOut(output);
+
+        StringReader input = new("stringReader");
+        Console.SetIn(input);
+
+        jester.TellJoke();
+        //Jester.Main(new string[] { });
+
+        Assert.IsFalse(output.ToString().ToLower().Contains("chuck"));
+        Assert.IsFalse(output.ToString().ToLower().Contains("norris"));
+        //Console.WriteLine(output.ToString());
+        //Assert.AreEqual<string>("Compare", output.ToString());
+
+        // code from the web about console output testing
+        // Assert.That(output.ToString(), 
+        //     Is.EqualTo(string.Format("What's your name?{0}Hello Somebody!!{0}", Environment.NewLine)));
+    }
+
 }
 
