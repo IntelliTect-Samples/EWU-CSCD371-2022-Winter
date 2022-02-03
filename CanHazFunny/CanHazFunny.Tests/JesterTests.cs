@@ -8,24 +8,26 @@ public class JesterTests
 {
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
-    public void Jester_ConstructorIConsoleDisplay_Null()
+    public void JesterConstructor_GivenNullIConsoleDisplay_ThrowsNullException()
     {
 
         new Jester(null, new JokeService());
     }
+
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
-    public void Jester_ConstructorIJokeService_Null()
+    public void JesterConstructor_GivenNullIJokeService_ThrowsNullException()
     {
 
         new Jester( new DisplayService() , null);
     }
-    [TestMethod]
-    public void Jester_Instantiate_Success()
-    {
-        Jester jester = new Jester(new DisplayService(), new JokeService());
 
-    }
+    //[TestMethod]
+    //public void Jester_Instantiate_Success()
+    //{
+    //    Jester jester = new (new DisplayService(), new JokeService());
+
+    //}
 
     [TestMethod]
     public void TellJoke_ReturnValidJoke() 
@@ -42,7 +44,7 @@ public class JesterTests
     [TestMethod]
     public void TellJoke_ReturnsString_WithChuckNorris_IsFalse()
     {
-        Jester jester = new Jester(new DisplayService(), new JokeService());
+        Jester jester = new (new DisplayService(), new JokeService());
 
         StringWriter output = new();
         Console.SetOut(output);
