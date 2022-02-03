@@ -1,15 +1,31 @@
-﻿namespace CanHazFunny;
+﻿using System;
 
-public class Jester : IJester, IJoke
+namespace CanHazFunny;
+
+public class Jester
 {
-    public string GetJoke()
+    public Jester(IJokeOutput jokeOutput, IJokeService jokeService)
     {
-        JokeService joke = new();
-        return joke.GetJoke();
+        JokeOutput = jokeOutput ?? throw new ArgumentNullException(nameof(jokeOutput));
+        JokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
     }
 
-    public string TellJoke()
+    public IJokeOutput JokeOutput { get; }
+    public IJokeService JokeService { get; }
+
+    public string? Joke { get; set; }
+
+    public virtual void TellJoke()
     {
-        return "work in progress";
+        do
+        {
+
+            Joke = JokeService.GetJoke();
+
+        } while (Joke.Contains("Chuck Norris"));
+        
+        JokeOutput.TellJoke(Joke);
+
     }
+    
 }
