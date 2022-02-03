@@ -44,5 +44,7 @@ public class JesterTests
         Assert.IsFalse(output.ToString().ToLower().Contains("norris"));
     }
 
+    // create a mock class that implements IJokeService and returns a predictable joke whe GetJoke() is called
+    // save the joke to a variable and use that variable in the unit test
 }
 
