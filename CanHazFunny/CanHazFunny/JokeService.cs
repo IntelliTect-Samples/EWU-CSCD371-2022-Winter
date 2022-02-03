@@ -8,17 +8,8 @@ public class JokeService : IJokeService
 
     public string GetJoke()
     {
-        try
-        {
-            string joke = HttpClient.GetStringAsync("https://geek-jokes.sameerkumar.website/api?format=json").Result;
-            return JsonFormatStrip(joke);
-        }
-        catch (Exception)
-        {
-
-
-        }
-        return "An Error Occured";
+        string joke = HttpClient.GetStringAsync("https://geek-jokes.sameerkumar.website/api?format=json").Result;
+        return JsonFormatStrip(joke);
     }
 
     //public void IsJson(string text)
