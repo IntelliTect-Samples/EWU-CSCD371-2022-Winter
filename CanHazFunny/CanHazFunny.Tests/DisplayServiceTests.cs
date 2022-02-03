@@ -6,7 +6,7 @@ namespace CanHazFunny.Tests;
 public class DisplayServiceTests
 {
     [TestMethod]
-    public void MyTestMethod()
+    public void DisplayService_VerifyDisplay_OutputIsString()
     {
         var display = new Mock<IConsoleDisplay>();
         display.Setup(x => x.Display(It.IsAny<string>()));

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CanHazFunny.Tests
 {
     [TestClass]
-    public class JokeServicesTests
+    public class JokeServiceTests
     {
         [TestMethod]
         public void JokeServices_ReturnValidString_Success()

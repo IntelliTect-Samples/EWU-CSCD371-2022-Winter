@@ -8,8 +8,6 @@ namespace CanHazFunny
 {
     public class Jester
     {
-        // Implement the Jester class. It should take in both interfaces as dependencies.
-        // These dependencies should be null checked
 
         private readonly IJokeService _jokeService;
         private readonly IConsoleDisplay _consoleDisplay;
@@ -18,19 +16,15 @@ namespace CanHazFunny
         {
             if (service is null)
             {
-                throw new ArgumentNullException(nameof(service)); // verify this is the right way to check
+                throw new ArgumentNullException(nameof(service));
             }
             if (output is null)
             {
-                throw new ArgumentNullException(nameof(output)); // verify this is the right way to check
+                throw new ArgumentNullException(nameof(output));
             }
             _consoleDisplay = output;
             _jokeService = service;
         }
-
-        // The Jester class TellJoke() method should retrieve a joke from the JokeService.
-        // If the joke contains "Chuck Norris", skip it and get another.
-        // The joke should be written to the output dependency.
 
         public void TellJoke()
         {
@@ -44,7 +38,5 @@ namespace CanHazFunny
             }
             _consoleDisplay.Display(validFormat);
         }
-        //{"joke": "No statement can catch the ChuckNorrisException."}
-
     }
 }
