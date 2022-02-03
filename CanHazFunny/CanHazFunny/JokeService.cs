@@ -33,8 +33,6 @@ public class JokeService : IJokeService
             return false;
     }
 
-
-
     private static string JsonFormatStrip(string jsonString)
     {
         string strippedstring = jsonString.Remove(0, 10);
