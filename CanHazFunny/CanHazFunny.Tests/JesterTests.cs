@@ -67,5 +67,22 @@ namespace CanHazFunny.Tests
 
             Assert.IsFalse(_joke.Contains("Chuck Norris"));
         }
+
+
+        [TestMethod]
+        public void MockJester_ValidJoke_GetJokeReturnsMatch()
+        {
+            MockJester mockJester = new MockJester();
+            Assert.AreEqual("You saved me, why? mm monke", mockJester.GetJoke());
+        }
+
+
+        [TestMethod]
+        public void MockJester_ValidJoke_PrintProducesMatch()
+        {
+            MockJester mockJester = new MockJester();
+            mockJester.Print("egg :)");
+            Assert.AreEqual("egg :)", mockJester._joke);
+        }
     }
 }
