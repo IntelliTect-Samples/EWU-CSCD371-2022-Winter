@@ -43,7 +43,6 @@ namespace CanHazFunny
                 validFormat = _jokeService.GetJoke();
             }
             _consoleDisplay.Display(validFormat);
-
         }
         //{"joke": "No statement can catch the ChuckNorrisException."}
 
