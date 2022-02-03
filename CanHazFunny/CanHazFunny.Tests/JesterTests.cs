@@ -20,6 +20,12 @@ public class JesterTests
 
         new Jester( new DisplayService() , null);
     }
+    [TestMethod]
+    public void Jester_Instantiate_Success()
+    {
+        Jester jester = new Jester(new DisplayService(), new JokeService());
+
+    }
 
     [TestMethod]
     public void TellJoke_ReturnValidJoke()
@@ -29,7 +35,7 @@ public class JesterTests
         mock.Setup(service => service.GetJoke()).Returns("Test Joke");
 
         Assert.AreEqual<string>(temp, mock.Object.GetJoke());
-        
+ 
     }
 
 }
