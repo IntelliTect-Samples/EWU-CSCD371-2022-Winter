@@ -10,7 +10,10 @@ public class JokeService : IJokeService
     {
         string joke = HttpClient.GetStringAsync("https://geek-jokes.sameerkumar.website/api?format=json").Result;
         return JsonFormatStrip(joke);
+
     }
+
+    // i dont think we even need this check
 
     //public void IsJson(string text)
     //{
@@ -25,19 +28,19 @@ public class JokeService : IJokeService
     //    }
     //}
 
-    public bool TextFormatIsJson(string text)
-    {
-        if (text.StartsWith("{") && text.EndsWith("}"))
-            return true;
-        else
-            return false;
-    }
+    //public static bool TextFormatIsJson(string text)
+    //{
+    //    if (text.StartsWith("{") && text.EndsWith("}"))
+    //        return true;
+    //    else
+    //        return false;
+    //}
 
     private static string JsonFormatStrip(string jsonString)
     {
-        string strippedstring = jsonString.Remove(0, 10);
-        int index = strippedstring.Length;
-        strippedstring = strippedstring.Remove(index - 3, 3);
-        return strippedstring;
+        string strippedString = jsonString.Remove(0, 10);
+        int index = strippedString.Length;
+        strippedString = strippedString.Remove(index - 3, 3);
+        return strippedString;
     }
 }

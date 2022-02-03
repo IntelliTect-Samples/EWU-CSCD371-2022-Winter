@@ -28,7 +28,8 @@ public class JesterTests
     }
 
     [TestMethod]
-    public void TellJoke_ReturnValidJoke()
+    public void TellJoke_ReturnValidJoke() 
+    // this returned zero code coverage for the telljoke method... no idea why
     {
         string temp = "Test Joke";
         Mock<IJokeService> mock = new Mock<IJokeService>();
@@ -58,8 +59,8 @@ public class JesterTests
         //Assert.AreEqual<string>("Compare", output.ToString());
 
         // code from the web about console output testing
-        // Assert.That(output.ToString(), 
-        //     Is.EqualTo(string.Format("What's your name?{0}Hello Somebody!!{0}", Environment.NewLine)));
+        // Assert.That(output.ToString(),Is.EqualTo(
+        // string.Format("What's your name?{0}Hello Somebody!!{0}", Environment.NewLine)));
     }
 
 }
