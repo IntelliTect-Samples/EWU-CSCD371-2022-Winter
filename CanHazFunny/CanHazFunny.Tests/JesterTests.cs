@@ -39,22 +39,24 @@ namespace CanHazFunny.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void NullJokeService_ExpectedNULLException_JesterCreation()
+        public void NullJokeService_JesterCreation_ExpectedNULLException()
         {
-            _jester = new Jester(null!, _printService!);
+            _ = new Jester(null!, _printService!);
         }
 
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void NullPrintService_ExpectedNULLException_JesterCreation()
+        public void NullPrintService_JesterCreation_ExpectedNULLException()
         {
-            _jester = new Jester(_jokeService!, null!);
+            Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                _ = new Jester(_jokeService!, null!);
+            });
         }
 
 
         [TestMethod]
-        public void CheckJokeString_DoesNotContain_ChuckNorris()
+        public void CheckJokeString_DoesNotContainChuckNorris_AssertFalse()
         {
             //the code below is an exact copy of Jester.TellJoke method
             //this TestMethod is meant to ensure Jester.TellJoke is working properly
@@ -69,7 +71,7 @@ namespace CanHazFunny.Tests
 
 
         [TestMethod]
-        public void MockJester_ValidJoke_GetJokeReturnsMatch()
+        public void MockJester_ValidJoke_GetJokeReturnsMatch_AssertEqual()
         {
             MockJester mockJester = new MockJester();
             Assert.AreEqual("You saved me, why? mm monke", mockJester.GetJoke());
@@ -77,7 +79,7 @@ namespace CanHazFunny.Tests
 
 
         [TestMethod]
-        public void MockJester_ValidJoke_PrintProducesMatch()
+        public void MockJester_ValidJoke_PrintProducesMatch_AssertEqual()
         {
             MockJester mockJester = new MockJester();
             mockJester.Print("egg :)");
