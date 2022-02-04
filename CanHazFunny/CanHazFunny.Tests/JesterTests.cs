@@ -17,11 +17,11 @@ public class JesterTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void JesterConstructor_GivenNullIJokeService_ThrowsNullException()
     {
-        new Jester( new DisplayService() , null);
+        new Jester(new DisplayService(), null);
     }
 
     [TestMethod]
-    public void TellJoke_ReturnValidJoke() 
+    public void TellJoke_ReturnValidJoke()
     {
         string tempJoke = "Test Joke";
         Mock<IJokeService> mock = new Mock<IJokeService>();
@@ -32,7 +32,7 @@ public class JesterTests
     [TestMethod]
     public void TellJoke_ReturnsString_WithChuckNorris_IsFalse()
     {
-        Jester jester = new (new DisplayService(), new JokeService());
+        Jester jester = new(new DisplayService(), new JokeService());
 
         StringWriter output = new();
         Console.SetOut(output);
@@ -42,8 +42,5 @@ public class JesterTests
         Assert.IsFalse(output.ToString().ToLower().Contains("chuck"));
         Assert.IsFalse(output.ToString().ToLower().Contains("norris"));
     }
-
-    // create a mock class that implements IJokeService and returns a predictable joke whe GetJoke() is called
-    // save the joke to a variable and use that variable in the unit test
 }
 
