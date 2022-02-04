@@ -29,7 +29,6 @@ public class JesterTests
 
         Assert.AreEqual<string>(tempJoke, mock.Object.GetJoke());
     }
-
     [TestMethod]
     public void TellJoke_ReturnsString_WithChuckNorris_IsFalse()
     {
