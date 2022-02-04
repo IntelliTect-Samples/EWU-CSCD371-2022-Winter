@@ -23,11 +23,11 @@ public class JesterTests
     [TestMethod]
     public void TellJoke_ReturnValidJoke() 
     {
-        string temp = "Test Joke";
+        string tempJoke = "Test Joke";
         Mock<IJokeService> mock = new Mock<IJokeService>();
         mock.Setup(service => service.GetJoke()).Returns("Test Joke");
 
-        Assert.AreEqual<string>(temp, mock.Object.GetJoke());
+        Assert.AreEqual<string>(tempJoke, mock.Object.GetJoke());
     }
 
     [TestMethod]

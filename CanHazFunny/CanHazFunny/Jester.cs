@@ -8,7 +8,6 @@ namespace CanHazFunny
 {
     public class Jester
     {
-
         private readonly IJokeService _jokeService;
         private readonly IConsoleDisplay _consoleDisplay;
 
