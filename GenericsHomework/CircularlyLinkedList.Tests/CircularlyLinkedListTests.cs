@@ -161,7 +161,6 @@ namespace GenericsHomework.Tests
             Assert.IsFalse(outRef.IsAlive);
         }
 
-
     }
 
     //Summary:
@@ -189,10 +188,3 @@ namespace GenericsHomework.Tests
 
     }
 }
-
-
-
-
-
-
-

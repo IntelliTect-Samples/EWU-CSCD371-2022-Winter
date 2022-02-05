@@ -9,7 +9,7 @@ public class CircularlyLinkedList<T>
 
     public T this[int index]
     {
-        get =>  ReturnDataAtIndex(index);
+        get => ReturnDataAtIndex(index);
     }
 
     public string GetStringOfIndex(int index)
@@ -21,7 +21,7 @@ public class CircularlyLinkedList<T>
         _Cursor = origin;
         return retString;
     }
-    
+
     //Summary :
     //Adds information from an array of type T to the linked list
     //Starts at the end of an array and "adds backwards"
@@ -31,7 +31,7 @@ public class CircularlyLinkedList<T>
     //or in _Cursor.next if the linked list has at least one node
     public void AddData(params T[] data)
     {
-        if (_Cursor is null) 
+        if (_Cursor is null)
         {
             Insert(data[0]);
             for (int i = data.Length - 1; i > 0; i--)
@@ -53,19 +53,20 @@ public class CircularlyLinkedList<T>
             }
         }
     }
-    
 
-    private void Insert(T data) { 
+
+    private void Insert(T data)
+    {
         if (data is null) throw new ArgumentNullException($"{nameof(Insert)} should never receive null");
         if (Exists(data)) throw new ArgumentException($"{data} exists in the circularly linked list");
 
-    
+
         if (_Cursor is null) _Cursor = new Node<T>(data);
-       
+
         else _Cursor.Append(data);
 
         Count++;
-        
+
     }
 
     public bool Exists([DisallowNull] T value)
@@ -163,9 +164,9 @@ public class CircularlyLinkedList<T>
             return Data?.ToString()!;
         }
 
-        public void Append([DisallowNull]Tdata nodeData)
+        public void Append([DisallowNull] Tdata nodeData)
         {
-            
+
             Node<Tdata> temp = Next;
             Node<Tdata> addedNode = new(nodeData) { Next = temp };
             Next = addedNode;
@@ -176,13 +177,5 @@ public class CircularlyLinkedList<T>
             Next = next;
         }
 
-
-
     }
-
 }
-
-
-
-
-
