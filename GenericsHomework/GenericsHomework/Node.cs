@@ -1,7 +1,7 @@
 ﻿namespace GenericsHomework;
 
 using System;
-public class Node<T> : IComparable<Node<T>>
+public class Node<T>
 {
     private Node<T>? _Next;
     public T? Data { get; private set; }
@@ -77,15 +77,5 @@ public class Node<T> : IComparable<Node<T>>
         }
 
     }
-
-
-
-    public int CompareTo(Node<T>? node)
-    {
-        return this.CompareTo(node);
-    }
-
-
-
 
 }

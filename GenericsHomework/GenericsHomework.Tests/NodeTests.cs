@@ -48,4 +48,14 @@ public class NodeTests
         Assert.IsTrue(_Node!.Exists(2));
         Assert.IsTrue(_Node!.Exists(1));
     }
+
+    [TestMethod]
+    public void Clear_RemoveAllExceptCurrentNode_WorksAsExpected()
+    {
+        _Node!.Append(3);
+        _Node!.Clear();
+        Assert.IsTrue(_Node.Exists(1));
+        Assert.IsFalse(_Node.Exists(3));
+    }
+
 }
