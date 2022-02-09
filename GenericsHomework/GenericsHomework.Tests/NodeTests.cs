@@ -25,13 +25,27 @@ public class NodeTests
     [TestMethod]
     public void Exists_GivenIncludedValue_ReturnsTrue()
     {
-        Assert.IsTrue(_Node.Exists(1));
+        Assert.IsTrue(_Node!.Exists(1));
+    }
+
+    [TestMethod]
+    public void Exists_GivenExcludedValue_ReturnsFalse()
+    {
+        Assert.IsFalse(_Node!.Exists("egg"));
     }
 
     [TestMethod]
     [ExpectedException(typeof(Exception))]
-    public void AppendDuplicateValue_ThrowsException()
+    public void Append_DuplicateValue_ThrowsException()
     {
         _Node!.Append(1);
+    }
+
+    [TestMethod]
+    public void Append_NewValue_WorksAsExpected()
+    {
+        _Node!.Append(2);
+        Assert.IsTrue(_Node!.Exists(2));
+        Assert.IsTrue(_Node!.Exists(1));
     }
 }

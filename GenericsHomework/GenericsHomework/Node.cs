@@ -3,24 +3,24 @@
 using System;
 public class Node<T> : IComparable<Node<T>>
 {
-    private Node<T> _Next;
+    private Node<T>? _Next;
     public T? Data { get; private set; }
 
     public Node<T> Next
     {
-        get { return _Next; }
-        private set { _Next = value; }
+        get { return _Next!; }
+        private set { _Next = value!; }
     }
 
     public Node(T data)
     {
         Data = data;
-        Next = this;
+        Next = this!;
     }
 
     public override string ToString()
     {
-        return Data?.ToString();
+        return Data?.ToString()!;
     }
 
     public void Append(T data) 
