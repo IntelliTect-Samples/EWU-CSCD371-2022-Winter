@@ -59,14 +59,14 @@ public class Node<T> : IComparable<Node<T>>
             head.Next = head;
         }
 
-    } //end Clear
+    }
 
 
 
     public int CompareTo(Node<T>? node)
     {
         return this.CompareTo(node);
-    } //end CompareTo
+    }
 
 
 
