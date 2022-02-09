@@ -17,8 +17,21 @@ public class NodeTests
     }
 
     [TestMethod]
-    public void TestToStringReturnsCorrectly()
+    public void ToString_ReturnsExpectedValue()
     {
         Assert.AreEqual<object>(_Node!.ToString(), "1");
+    }
+
+    [TestMethod]
+    public void Exists_GivenIncludedValue_ReturnsTrue()
+    {
+        Assert.IsTrue(_Node.Exists(1));
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void AppendDuplicateValue_ThrowsException()
+    {
+        _Node!.Append(1);
     }
 }

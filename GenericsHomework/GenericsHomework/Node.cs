@@ -23,18 +23,35 @@ public class Node<T> : IComparable<Node<T>>
         return Data?.ToString();
     }
 
-    public bool Exists(T data, Node<T> root)
+    public void Append(T data) 
     {
-        Node<T> current = root;
-
-        while (current.Next != current && current.Next != root)
+        if (Exists(data))
         {
-            if (new Node<T>(data).CompareTo(current) == 0)
-            {
-                return true;
-            }
+            throw new Exception("Duplicate value! Cannot append a value already in list.");
         }
+        else
+        {
+            Node<T> nn = new(data);
 
+            nn.Next = Next;
+            Next = nn;
+        }
+    }
+
+    public bool Exists(T data)
+    {
+        Node<T> current = this;
+        do
+        {
+            if (current.Data is not null)
+            {
+                if (current.Data.Equals(data))
+                {
+                    return true;
+                }
+            }
+            current = current.Next;
+        } while (current != this);
         return false;
     }
 
