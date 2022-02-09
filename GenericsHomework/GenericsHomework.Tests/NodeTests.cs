@@ -44,8 +44,8 @@ public class NodeTests
     [TestMethod]
     public void Append_NewValue_WorksAsExpected()
     {
-        _Node!.Append(2);
-        Assert.IsTrue(_Node!.Exists(2));
+        _Node!.Append("2");
+        Assert.IsTrue(_Node!.Exists("2"));
         Assert.IsTrue(_Node!.Exists(1));
     }
 
