@@ -179,7 +179,7 @@ namespace GenericsHomework.Tests
             {
 
                 WeakReference nodeRef = new(_Cursor.Next);
-                _Cursor.SetNext(_Cursor);
+                _Cursor.ClearFrom();
                 return nodeRef;
 
             }

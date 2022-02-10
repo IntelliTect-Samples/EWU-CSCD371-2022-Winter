@@ -103,7 +103,7 @@ public class CircularlyLinkedList<T>
     {
         if (_Cursor is not null)
         {
-            _Cursor.SetNext(_Cursor);
+            _Cursor.ClearFrom();
             Count = 1;
         }
     }
@@ -172,9 +172,9 @@ public class CircularlyLinkedList<T>
             Next = addedNode;
         }
 
-        public void SetNext(Node<Tdata> next)
+        public void ClearFrom()
         {
-            Next = next;
+            Next = this;
         }
 
     }
