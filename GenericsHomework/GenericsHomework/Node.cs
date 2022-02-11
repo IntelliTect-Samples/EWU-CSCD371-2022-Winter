@@ -7,7 +7,7 @@ public class Node<T>
     public T? Data { get; private set; }
 
     public Node<T> Next
-    {
+    {   
         get { return _Next!; }
         private set { _Next = value!; }
     }
@@ -31,10 +31,10 @@ public class Node<T>
         }
         else
         {
-            Node<T> nn = new(data);
+            Node<T> newNode = new(data);
 
-            nn.Next = Next;
-            Next = nn;
+            newNode.Next = Next;
+            Next = newNode;
         }
     }
 
@@ -50,8 +50,11 @@ public class Node<T>
                     return true;
                 }
             }
+
             current = current.Next;
+
         } while (current != this);
+
         return false;
     }
 

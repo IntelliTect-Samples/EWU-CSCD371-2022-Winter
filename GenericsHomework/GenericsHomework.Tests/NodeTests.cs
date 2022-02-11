@@ -10,16 +10,16 @@ public class NodeTests
 
 
     [TestInitialize]
-    public void Init()
+    public void Initialize()
     {
-        Node<object> nn = new Node<object>(1);
-        _Node = nn;
+        Node<object> newNode = new(1);
+        _Node = newNode;
     }
 
     [TestMethod]
-    public void ToString_ReturnsExpectedValue()
+    public void ToString_ReturnsExpectedString()
     {
-        Assert.AreEqual<object>(_Node!.ToString(), "1");
+        Assert.AreEqual<string>(_Node!.ToString(), "1");
     }
 
     [TestMethod]
@@ -45,7 +45,9 @@ public class NodeTests
     public void Append_NewValue_WorksAsExpected()
     {
         _Node!.Append("2");
+        _Node!.Append(3.14);
         Assert.IsTrue(_Node!.Exists("2"));
+        Assert.IsTrue(_Node!.Exists(3.14));
         Assert.IsTrue(_Node!.Exists(1));
     }
 
@@ -53,9 +55,11 @@ public class NodeTests
     public void Clear_RemoveAllExceptCurrentNode_WorksAsExpected()
     {
         _Node!.Append(3);
+        _Node!.Append("egg");
         _Node!.Clear();
-        Assert.IsTrue(_Node.Exists(1));
-        Assert.IsFalse(_Node.Exists(3));
+        Assert.IsFalse(_Node!.Exists(3));
+        Assert.IsFalse(_Node!.Exists("egg"));
+        Assert.IsTrue(_Node!.Exists(1));
     }
 
 }
