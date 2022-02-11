@@ -57,7 +57,7 @@
 
         }//end of Exists method
 
-        public override string ToString()
+        public override string? ToString()
         {
             if (Value == null)
                 return null;
