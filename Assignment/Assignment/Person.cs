@@ -11,6 +11,7 @@ namespace Assignment
             LastName = lastName;
             Address = address;
             EmailAddress = emailAddress;
+            //System.Reflection.Assembly.GetExecutingAssembly().Location;
         }
 
         public string FirstName { get; set; }
