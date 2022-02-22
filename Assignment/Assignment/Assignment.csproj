@@ -3,5 +3,18 @@
   <ItemGroup>
     <ProjectReference Include="..\Assignment.Interfaces\Assignment.Interfaces.csproj" />
   </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<LangVersion>10.0</LangVersion>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+	</PropertyGroup>
 
+	<ItemGroup>
+		<None Update="People.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>
