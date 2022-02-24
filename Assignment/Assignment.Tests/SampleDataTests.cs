@@ -17,6 +17,12 @@ namespace Assignment.Tests
         {
             _sampleData = new();
         }
+        
+        [TestMethod]
+        public void CsvRows_VerifyDataFileExists()
+        {
+            Assert.IsTrue(File.Exists("People.csv"));
+        }
 
 
         [TestMethod]
@@ -24,6 +30,13 @@ namespace Assignment.Tests
         {
             Assert.IsNotNull(_sampleData!.CsvRows);
             Assert.IsInstanceOfType(_sampleData!.CsvRows, typeof(IEnumerable<string>));
+        }
+
+        [TestMethod]
+        public void CsvRows_SkipsFirstLineAsExpected()
+        {
+            Assert.IsTrue(_sampleData!.CsvRows.First().Equals("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577"));
+            Assert.IsFalse(_sampleData!.CsvRows.First().Equals("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip"));
         }
 
         [TestMethod]
@@ -47,11 +60,35 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
+        public void MethodTwo_ReturnsOrderedListOfStates()
+        {
+            IEnumerable<string> stateList = _sampleData!.GetUniqueSortedListOfStatesGivenCsvRows();
+            Assert.AreEqual("AL", stateList.First());
+            Assert.AreEqual("WV", stateList.Last());
+            string str = "";
+            string expectedResult =
+                "AL,AZ,CA,DC,FL,GA,IN,KS,LA,MD,MN,MO,MT,NC,NE,NH,NV,NY,OR,PA,SC,TN,TX,UT,VA,WA,WV,";
+            foreach (var state in stateList)
+            {
+                str = str + state + ",";
+            }
+            Assert.AreEqual(expectedResult, str);
+        }
+
+        [TestMethod]
         public void MethodThree_ReturnsNonNull_String()
         {
             string str = _sampleData!.GetAggregateSortedListOfStatesUsingCsvRows();
             Assert.IsNotNull(str);
             Assert.IsInstanceOfType(str, typeof(string));
+        }
+
+        [TestMethod]
+        public void MethodThree_ReturnsExpectedString()
+        {
+            string expectedResult = 
+                "AL,AZ,CA,DC,FL,GA,IN,KS,LA,MD,MN,MO,MT,NC,NE,NH,NV,NY,OR,PA,SC,TN,TX,UT,VA,WA,WV";
+            Assert.AreEqual(expectedResult, _sampleData!.GetAggregateSortedListOfStatesUsingCsvRows());
         }
 
         [TestMethod]

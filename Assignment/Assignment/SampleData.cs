@@ -36,7 +36,7 @@ namespace Assignment
         {
             string[] states = GetUniqueSortedListOfStatesGivenCsvRows().ToArray();
 
-            return string.Join(", ", states);
+            return string.Join(",", states);
         }
 
         // 4.
