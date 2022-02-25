@@ -12,6 +12,7 @@ namespace Assignment.Tests
 
         public SampleData? _sampleData;
 
+
         [TestInitialize]
         public void Initialize()
         {
@@ -107,7 +108,16 @@ namespace Assignment.Tests
 
 
         [TestMethod]
-        public void MethodFive_GivenValidPredicate_ReturnsNonNull
+        public void MethodFive_GivenValidPredicate_ReturnsNonNull()
+        {
+            Predicate<string> email = email => email!.Contains("stanford");
+
+            IEnumerable<(string firstName, string lastName)> results = _sampleData!.FilterByEmailAddress(email!);  
+            Assert.IsNotNull(results);
+            Assert.IsInstanceOfType(results, typeof(IEnumerable<(string, string)>));
+
+            Assert.AreEqual(("Fayette","Dougherty"), (results.Last().firstName,results.Last().lastName));
+        }
 
         [TestMethod]
         public void MethodSix_ReturnsNonNull_String()
