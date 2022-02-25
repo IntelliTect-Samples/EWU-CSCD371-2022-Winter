@@ -34,7 +34,7 @@ namespace Assignment
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
         {
-            string[] states = GetUniqueSortedListOfStatesGivenCsvRows().ToArray();
+            string[] states = GetUniqueSortedListOfStatesGivenCsvRows().Select(item => item).ToArray();
 
             return string.Join(",", states);
         }
@@ -81,8 +81,8 @@ namespace Assignment
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(IEnumerable<IPerson> people)
         {
-            return People.Select(item => item.Address.State)
-                   .Distinct().Aggregate((current, next) => current + "," + next);
+            return people.Select(item => item.Address.State)
+                   .Distinct().Aggregate((current, next) => $"{current},{next}");
         }
     }
 }

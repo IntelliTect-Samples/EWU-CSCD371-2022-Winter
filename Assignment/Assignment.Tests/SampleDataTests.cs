@@ -33,8 +33,9 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
-        public void CsvRows_SkipsFirstLineAsExpected()
+        public void CsvRows_SkipsFirstLineProperly()
         {
+            Assert.AreEqual<int>(50, _sampleData!.CsvRows.Count());
             Assert.IsTrue(_sampleData!.CsvRows.First().Equals("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577"));
             Assert.IsFalse(_sampleData!.CsvRows.First().Equals("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip"));
         }
@@ -43,12 +44,6 @@ namespace Assignment.Tests
         public void CsvRows_Returns_IEnumerableListOfStrings()
         {
             Assert.IsInstanceOfType(_sampleData!.CsvRows, typeof(IEnumerable<string>));
-        }
-
-        [TestMethod]
-        public void CsvRows_SkipsFirstLine()
-        {
-            Assert.AreEqual<int>(50, _sampleData!.CsvRows.Count());
         }
 
         [TestMethod]
@@ -76,6 +71,17 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
+        public void MethodTwo_VerifyReturnsCorrectlySortedList()
+        {
+            IEnumerable<string> stateList1 = _sampleData!.GetUniqueSortedListOfStatesGivenCsvRows();
+            IEnumerable<string> stateList2 = _sampleData!.GetUniqueSortedListOfStatesGivenCsvRows();
+            IEnumerable<string> stateList3 = _sampleData!.GetUniqueSortedListOfStatesGivenCsvRows();
+            Assert.IsTrue(stateList1.SequenceEqual(stateList2));
+            Assert.IsTrue(stateList1.SequenceEqual(stateList3));
+            Assert.IsTrue(stateList2.SequenceEqual(stateList3));
+        }
+
+        [TestMethod]
         public void MethodThree_ReturnsNonNull_String()
         {
             string str = _sampleData!.GetAggregateSortedListOfStatesUsingCsvRows();
@@ -99,12 +105,26 @@ namespace Assignment.Tests
             Assert.IsInstanceOfType(people, typeof(IEnumerable<IPerson>));
         }
 
+
+        [TestMethod]
+        public void MethodFive_GivenValidPredicate_ReturnsNonNull
+
         [TestMethod]
         public void MethodSix_ReturnsNonNull_String()
         {
             string str = _sampleData!.GetAggregateListOfStatesGivenPeopleCollection(_sampleData!.People);
             Assert.IsNotNull(str);
             Assert.IsInstanceOfType(str, typeof(string));
+        }
+
+        [TestMethod]
+        public void MethodSix_ReturnsProperlySortedList()
+        {
+            SampleData sampleData = new();
+            string sixResult = sampleData!.GetAggregateListOfStatesGivenPeopleCollection(sampleData!.People!);
+            string threeResult = sampleData!.GetAggregateSortedListOfStatesUsingCsvRows();
+
+            Assert.AreEqual(sixResult,threeResult);
         }
 
     }
