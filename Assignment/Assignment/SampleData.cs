@@ -7,12 +7,25 @@ namespace Assignment
 {
     public class SampleData : ISampleData
     {
+
+        private string _filePath;
+
+        public SampleData()
+        {
+            _filePath = "People.csv";
+        }
+
+        public SampleData(string filePath)
+        {
+            _filePath = filePath!;
+        }
+
         // 1.
         public IEnumerable<string> CsvRows
         {
             get
             {
-                return File.ReadAllLines("People.csv").Skip(1);
+                return File.ReadAllLines(_filePath).Skip(1);
             }
         }
 

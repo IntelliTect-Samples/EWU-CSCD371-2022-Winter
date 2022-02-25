@@ -56,6 +56,28 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
+        public void MethodTwo_WorksAsExpectedWithHardCodedSpokaneAddresses()
+        {
+            string[] spokanePeople =
+            {
+                "Id,FirstName,LastName,Email,StreetAddress,City,State,Zip",
+                "-4,Doctor,Eggman,IH8Sonic@egg.com,1234 Egg Street,Spokane,WA,99022",
+                "-2,Doug,Dimmadome,DimmiestofDomes@dimma.dome,5678 Dimmedome Lane,Spokane,WA,99021",
+                "-7,Monke,Man,banana@banana.com,9012 Banana Ave,Spokane,WA,99021",
+            };
+            string tempFilePath = "SpokanePeople.csv";
+            File.WriteAllLines(tempFilePath!, spokanePeople!);
+
+            SampleData spokaneData = new(tempFilePath!);
+
+            IEnumerable<string> spokaneAddresses = spokaneData!.GetUniqueSortedListOfStatesGivenCsvRows();
+            Assert.AreEqual(1, spokaneAddresses!.Count());
+            Assert.AreEqual<string>("WA",spokaneAddresses!.First());
+            File.Delete(tempFilePath);
+        }
+
+
+        [TestMethod]
         public void MethodTwo_ReturnsOrderedListOfStates()
         {
             IEnumerable<string> stateList = _sampleData!.GetUniqueSortedListOfStatesGivenCsvRows();
