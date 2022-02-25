@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Node<T> where T : notnull
+public class Node<T> : IEnumerable<Node<T>>, IEnumerable
 {
     //This is a direct copy from our Assignment-4 submission.
     //The required methods that we added for Assignment-5+6 are below
@@ -89,29 +89,34 @@ public class Node<T> where T : notnull
     }
 
     //New methods for Assignment-5+6 below...
-    public IEnumerable<T> EnumerableList
+    public IEnumerator<Node<T>> GetEnumerator()
     {
-        get
-        {
             Node<T> curr = this;
 
             do
             {
-                yield return curr!.Data!;
+                yield return curr!;
                 curr = curr.Next;
 
             } while (curr != this);
-        }
     }
 
-    public IEnumerable<T> ChildItems(int maximum)
+    IEnumerator IEnumerable.GetEnumerator()
     {
-        IEnumerable<T> list = this.EnumerableList;
-        
-        for (int i = 0; i < maximum; i++)
+        return this.GetEnumerator();
+    }
+
+    public IEnumerable<Node<T>> ChildItems(int maximum)
+    {
+        Node<T> curr = this;
+        int count = 0;
+      
+        do
         {
-            yield return list.ElementAt(i);
-        }
+            yield return curr!;
+            curr = curr.Next;
+            count++;
+        } while (count > maximum);
     }
 
 }

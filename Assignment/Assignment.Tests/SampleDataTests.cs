@@ -106,16 +106,21 @@ namespace Assignment.Tests
             Assert.IsInstanceOfType(people, typeof(IEnumerable<IPerson>));
         }
 
+        [TestMethod]
+        public void People_WorksAsExpected_ReturnsIPersons()
+        {
+            IEnumerable<IPerson> people = _sampleData!.People;
+            Assert.AreEqual(_sampleData!.CsvRows.Count(), people.Count());
+        }
 
         [TestMethod]
         public void MethodFive_GivenValidPredicate_ReturnsNonNull()
         {
             Predicate<string> email = email => email!.Contains("stanford");
+            IEnumerable<(string firstName, string lastName)> results = _sampleData!.FilterByEmailAddress(email!);
 
-            IEnumerable<(string firstName, string lastName)> results = _sampleData!.FilterByEmailAddress(email!);  
-            Assert.IsNotNull(results);
-            Assert.IsInstanceOfType(results, typeof(IEnumerable<(string, string)>));
-
+            Assert.AreEqual(2, results.Count());
+            Assert.AreEqual(("Sancho","Mahony"),(results.First().firstName,results.First().lastName));
             Assert.AreEqual(("Fayette","Dougherty"), (results.Last().firstName,results.Last().lastName));
         }
 
@@ -128,13 +133,12 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
-        public void MethodSix_ReturnsProperlySortedList()
+        public void MethodSix_ReturnsSimilarToMethodThree()
         {
-            SampleData sampleData = new();
-            string sixResult = sampleData!.GetAggregateListOfStatesGivenPeopleCollection(sampleData!.People!);
-            string threeResult = sampleData!.GetAggregateSortedListOfStatesUsingCsvRows();
+            string sixResult = _sampleData!.GetAggregateListOfStatesGivenPeopleCollection(_sampleData!.People!);
+            string threeResult = _sampleData!.GetAggregateSortedListOfStatesUsingCsvRows();
 
-            Assert.AreEqual(sixResult,threeResult);
+            Assert.AreEqual(threeResult.Length,sixResult.Length);
         }
 
     }

@@ -64,4 +64,24 @@ public class NodeTests
         Assert.IsTrue(_Node!.Exists(1));
     }
 
+    //Assignment 5+6
+
+    private static Node<string> CreateNodeList()
+    {
+        Node<string> myNode = new("1");
+        myNode.Append("2");
+        myNode.Next.Append("3");
+        myNode.Next.Next.Append("4");
+
+        return myNode;
+    }
+
+    [TestMethod]
+    public void MethodSeven_ReadsListAsExpected()
+    {
+        Node<string> list = CreateNodeList();
+        Assert.IsInstanceOfType(list.ChildItems(3), typeof(IEnumerable<Node<string>>));
+    }
+
+
 }
