@@ -11,7 +11,7 @@ namespace Assignment
         public IEnumerable<string> CsvRows => File.ReadAllLines("People.csv").Skip(1).ToList();
 
         // 2.
-        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() => CsvRows.Select(l => l.Split(',')[7]).Where(x => x != null).Distinct()!;      
+        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() => CsvRows.Select(l => l.Split(',')[6]).Where(x => x != null).Distinct()!.OrderBy(x => x);      
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
@@ -31,7 +31,7 @@ namespace Assignment
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(
-            IEnumerable<IPerson> people) => people.Select(l => l.Address.State).Distinct().Aggregate((p1, p2) => p1 + ", " + p2);
+            IEnumerable<IPerson> people) => people.Select(l => l.Address.State).Distinct().Aggregate((p1, p2) => p1 + "," + p2);
 
     }
 }
