@@ -76,7 +76,7 @@ Recommended But **Not** Required (in order of priority)
 
 6. Implement `ISampleData.GetAggregateListOfStatesGivenPeopleCollection(IEnumerable<IPerson> people)` to return a `string` that contains a **unique**, comma separated list of states. ❌✔
 
-   - Use the `people` parameter from `ISampleData.GetUniqueListOfStates` for your data source. ❌✔
+   - Use the `people` parameter from `ISampleData.People` property for your data source. ❌✔
    - At a minimum, use `System.Linq.Enumerable.Aggregate` LINQ method to create your result. ❌✔
    - Don't forget the list should be unique. ❌✔
    - It is recommended that, at a minimum, you use `ISampleData.GetUniqueSortedListOfStatesGivenCsvRows` to validate your result.
