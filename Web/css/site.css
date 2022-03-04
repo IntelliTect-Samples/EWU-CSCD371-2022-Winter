@@ -1,0 +1,64 @@
+span {
+    font-size:2.5em;
+}
+
+p.special {
+    font-size:2.0em;
+    font-weight: bold;
+}
+
+.special{
+    font-size:1.5em;
+    font-weight: bold;
+    padding: 1px;
+    margin: 20px 2px 20px;
+}
+
+div {
+    border: 2px solid black;
+    background-color: black;
+    margin: -8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: rgb(214, 214, 214);
+    border: 2px solid black;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+button:hover {
+    padding: 10px;
+    background: linear-gradient(90deg, rgb(0, 255, 242) 10%, rgba(0,212,255,1) 100%);
+}
+
+td, th{
+    border: 1px solid black;
+    border-spacing: 0;
+    border-collapse: collapse;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+table {
+    border-spacing: 0;
+    width: 100%; 
+}
+
+thead {
+    background-color: lightgrey;
+}
+tfoot tr th {
+    border-top: 10px black;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
+}
