@@ -62,3 +62,28 @@ tfoot tr th {
 .text-right{
     text-align: right;
 }
+
+.fa-solid{
+    color: white;
+}
+
+.fa-solid:hover{
+    color: aquamarine;
+}
+
+.menu{
+    border: 1px solid black;
+    width: 350px;
+    display: block;
+}
+
+.menu:hover{
+    display: block;
+}
+
+.menu button{
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    background-color: linear-gradient(90deg, rgb(0, 255, 242) 10%, rgba(0,212,255,1) 100%);
+}
