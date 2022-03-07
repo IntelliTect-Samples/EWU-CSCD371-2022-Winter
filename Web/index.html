@@ -1,56 +1,52 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-    <head>
-        <!-- Make sure you have this
-            section in your HTML file. -->
-        <title>The Joke Page</title>
-        <link rel="stylesheet" href="css/site.css">
-        <link rel="stylesheet" href="css/all.css">
-    </head>
+<head>
+    <title>Look at all these JOKES</title>
+    <script src="https://kit.fontawesome.com/cf696a3776.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
 
-    <body>
-        <div>
-            <p><span style="color: rgb(177, 0, 0);">EWU</span></p>&nbsp;
-            <p><span style="color: white;">Menu</span><i class="menu" class="fa-solid fa-bars"></i></p>
+<body>
+    <div class="top">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="DropdownFunction()">Menu
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="dropdown-content" id="dropdown">
+                <a href="#">Sign In</a>
+                <a href="#">Engage Warp Drive</a>
+                <a href="#">Initiate Death Sequence</a>
+                <a href="html/support.html">Support</a>
+            </div>
         </div>
+        <span class="title-text">EWU</span>
+    </div>
 
-        <div class="menu" >
-            <button>Test one</button>
-            <button>Test two</button>
-            <button>Test three</button>
-            <button>Test four</button>
-        </div>
-
+    <div>
         <p class="special">
             The Joke Page
         </p>
 
-        <hr>
+        <div class="card">
+            <header>A Joke</header>
 
-        <table>
-            <thead>
-                <tr>
-                    <th class="special text-left">A Joke</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>this is were the joke will generate</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th class="text-left">
-                        <button>Another Joke</button>
-                        <button>Joke API</button>
-                    </th>
-                </tr>
-            </tfoot>
-        </table>
+            <p class="joke"></p>
+            <p class="delivery"></p>
+            
+            <footer>
+                <button class="jokebtn" onclick="getNewJoke()">Another Joke</button>
+                <button class="jokeAPIButton" onclick="apiPage()">Joke API</button>
+            </footer>
+        </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>
+</body>
 
-    </body>
 </html>
