@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <title>main</title>
+</head>
+<body>
+    <div id="header">
+        <div id="ewulogo">
+            EWU
+        </div>
+        <div id="menuButton">
+            Menu
+        </div>
+    </div>
+    <div id="Content">
+        <h1>The Joke Page </h1>
+
+
+
+
+        <table>
+            <tr>
+                <th>A Joke</th>
+            </tr>
+            <tr>
+                <td>Why are modern programming languages so materialistic?</td>
+            </tr>
+            <div class="mainButton">
+            <tr>
+                <td>
+                    <button style="display:inline">Another joke</button>
+
+
+                    <!--This line will update theJoke api-->
+                    <!--normal button will be where we can add the link-->
+                    <!--Style is messed up cant move it to css, if i do move it then it will be on the line below-->
+                    <input type="submit" id="normalButton" value="Search" style="height:50px; width:200px" />
+                </td>
+            </tr>
+
+        </table>
+
+
+        <!--
+            <div id =border>
+                <table>
+                    <tr>
+                      <th>A Joke</th>
+                    </tr>
+                    <tr>
+                      <td>Why are modern programming languages so materialistic?</td>
+                    </tr>
+                </table>
+            </div> -->
+        <!--old table
+
+        <div id = "tittleTable">
+            <h2>A Joke</h2>
+        </div>
+
+
+        <div id = "joke">
+                <table>
+                   <tr>
+                      <td>Why are modern programming languages so materialistic?</td>
+                   </tr>
+                   <br>
+                   <tr>
+                    <td>Because they are object-oriented.</td>
+                   </tr>
+                </table>
+            </div> -->
+
+
+
+
+        <div class="menu">
+            <button class="editbtn">Find Miracle Max</button>
+            <button class="editbtn">Storm the Castle</button>
+            <button class="editbtn">Do Chores</button>
+            <button class="editbtn">Become unmostly dead</button>
+        </div>
+</body>
+
+
+
+
+<style>
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 1000px;
+            text-align: left;
+            /*look at border radius*/
+            border-radius: 6px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 1000px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 25px;
+        }
+
+        th {
+            background-color: gray;
+        }
+
+
+
+
+        /*Tried to fix*/
+        #border {
+            width: 100px;
+        }
+
+        #header {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 25px;
+            background-color: black;
+            height: 55px;
+            border-bottom: 1px solid #d3d3d3;
+            overflow: auto;
+        }
+
+        #ewulogo {
+            font-size: 45pt;
+            color: #A10022;
+            width: 100px;
+            float: left;
+        }
+
+        #menuButton {
+            float: right;
+            width: 300px;
+            margin-right: 20px;
+            text-align: right;
+            color: white;
+            font-size: 24pt;
+        }
+
+        .link {
+            text-decoration: none;
+        }
+
+        button {
+            background: linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(9, 114, 121, 0.5) 75%, rgba(0,212,255,1) 100%);
+            border: 2px solid aliceblue;
+            padding: 20px;
+            margin: 10px;
+            display: block;
+            width: 200px;
+            border-radius: 10px;
+            color: white;
+        }
+
+            button:hover {
+                background: linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(9, 114, 121, 0.5) 75%, rgba(0,212,255,1) 100%);
+                padding: 20px;
+                margin: 10px;
+            }
+        /* #Content {
+        font-size: 30px;
+        width: 40%;
+        height: 40%;
+    } */
+        html, head {
+            background-color: white;
+        }
+
+        #normalButton {
+            width: 100%;
+            height: 50px;
+        }
+
+        .mainButton {
+            width: 80%;
+            height: 100px;
+            border-radius: 25px;
+        }
+
+        .menu {
+            border: 1px solid black;
+            width: 25%;
+            height: 300px;
+            border-width: 5px;
+            float: right;
+        }
+</style> 
