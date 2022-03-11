@@ -15,6 +15,9 @@ function apiPage(){
 window.location = 'https://v2.jokeapi.dev/joke/Programming';
 }
 
+let setup = document.querySelector(".joke");
+let delivery = document.querySelector(".delivery");
+
 function getNewJoke() {
 axios({
   method: 'get',
@@ -32,6 +35,7 @@ axios({
     }, 4000, response)
     })
   .catch(function (error){
+  setup.innerText = "Error, please try again in a few moments!";
     console.log(error);
   });
 }
