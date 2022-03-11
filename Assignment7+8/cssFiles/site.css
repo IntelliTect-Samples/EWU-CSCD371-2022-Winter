@@ -24,7 +24,7 @@
 .title {  
     font-size: 30px;
     color: red;
-    width: 95%;
+    width: 90%;
 }
 
 .menu {
@@ -37,6 +37,8 @@
 .menu-style {
     font-size: 30px;
     font-weight: lighter;
+    padding: 0px;
+    margin: 0px;
     color: white;
 }
 
@@ -50,7 +52,7 @@
     border: none;
     outline: none;
     color: white;
-    padding: 14px 16px 14px 5px;
+    padding: 10px 16px;
     background-color: inherit;
 }
 
