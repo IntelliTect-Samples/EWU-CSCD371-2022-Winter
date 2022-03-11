@@ -1,0 +1,118 @@
+body 
+{
+    margin: auto;
+    height:50%;
+    width: 70%;
+}
+.EWU
+{
+    text-indent: .5em;
+    background-color: black;
+    border: 1px solid black;   
+}
+.EWU h1
+{
+    color: #A10022;
+    margin: 0;
+}
+.JokeHeader
+{
+    border-bottom: .1em solid lightgray;
+    margin-bottom: .1em;
+}
+.Menu
+{  
+    position: relative;
+    float: right;
+    margin-top: 1em;
+}
+.MenuButton
+{
+    background-color: black;
+    color: white;
+    border: none;
+}
+.MenuDrop button
+{
+    background: linear-gradient(90deg, rgb(14, 141, 190) 25%,rgb(143, 22, 180) 100%);
+    color: white;
+    display: block;
+    min-width: 100%;
+    margin-top: .3em;
+    margin-bottom: .3em;
+}
+.MenuDrop
+{
+    border: solid .01em black;
+    background: white;
+    min-width: 300%;
+    position: absolute;
+    overflow:auto;
+    display: none;
+    padding: .5em;
+    right: 0;
+}
+.MenuDrop button:hover
+{
+    background: linear-gradient(45deg, pink, orange);
+}
+.MenuDrop-show 
+{
+    display:block;
+}
+.JokeCard
+{
+    box-shadow: 0 4px 8px 0 black;
+    border: solid .05em black;  
+    border-radius: 10px;
+    width: 100%;
+    transition: .5s;
+}
+.JokeCard:hover
+{
+    box-shadow: 0 8px 16px 0 black;
+}
+.JokeCardContainer header
+{
+    background-color: lightgray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.JokeCardContainer
+{
+    text-indent: .5em;
+    
+}
+.JokeCardContainer h2
+{
+    margin: 1px;
+}
+.JokeCardContainer footer
+{
+    border-top: solid 0.1em lightgray;
+    margin-bottom: .5em;
+}
+.JokeCardContainer button
+{
+    background: linear-gradient(90deg, rgb(2, 145, 133) 25%,rgb(73, 110, 230) 100%);
+    color: white;
+    margin-top: .3em;
+}
+.JokeCardContainer button:hover
+{
+    background: linear-gradient(45deg, yellow, green);
+}
+.JokeLinkButton
+{
+    background-color: lightgray;
+    border: 2px solid black;
+    color: black;
+    padding: 2px 6px 2px 6px;
+    border-radius: 5px;
+    margin-top: .3em;
+    text-decoration: none;
+}
+.JokeLinkButton:hover{
+    background-color: red;
+    color: blue;
+}

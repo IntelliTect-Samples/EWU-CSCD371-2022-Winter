@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EWU Joke API</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/css.css">
+</head>
+<div class="EWU">
+    <div class="Menu">
+        <button class="MenuButton">
+            Menu
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div id="menuDrop" class="MenuDrop">
+            <!--The first button is the creative button-->
+            <button onclick="creativeButt()">Find Miracle Max.</button>
+            <button>Storm the Castle.</button>
+            <button>Do Chores</button>
+            <button>Become unmostly dead.</button>
+        </div>
+    </div>
+    <h1>EWU</h1>
+</div>
+<div class="JokeHeader">
+    <h1>The Joke Page</h1>
+</div>
+<div class="JokeCard">
+    <div class="JokeCardContainer">
+        <header>
+            <h2>A Joke</h2>
+        </header>
+        <body>
+            <p class="Joke"></p>
+            <p class="Result"></p>
+        </body>
+        <footer>
+            <button onclick="getJoke()">Another Joke</button>
+            <a href="https://v2.jokeapi.dev/joke/Programming" target="Empty" class="JokeLinkButton">Joke API</a>
+        </footer>
+    </div>
+</div>
+<script src="https://kit.fontawesome.com/2be03f9c83.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/index.js"></script>
+    </body>
+</html>
