@@ -22,7 +22,7 @@ public class PingProcess
         void updateStdOutput(string? line) =>
             (stringBuilder??=new StringBuilder()).AppendLine(line);
         Process process = RunProcessInternal(StartInfo, updateStdOutput, default, default);
-        return new PingResult( process.ExitCode, stringBuilder?.ToString());
+        return new PingResult( process.ExitCode, stringBuilder?.ToString().Trim());//HERE
     }
 
     public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
@@ -48,13 +48,13 @@ public class PingProcess
         {
             Task<PingResult> task = Task.Run(() => Run(item));
             await task.WaitAsync(default(CancellationToken));
-            stringBuilder.Append(task.Result);
+            stringBuilder.AppendLine(task.Result.StdOutput);
             return task.Result.ExitCode;
         });
 
         await Task.WhenAll(all);
-        int total = all.Aggregate(0, (total, item) => total + item.Result);
-        return new PingResult(total, stringBuilder?.ToString());
+        int total = all.Aggregate(0, (total, item) => total + 1);
+        return new PingResult(total, stringBuilder?.ToString().Trim());
     }
 
     async public Task<PingResult> RunLongRunningAsync(
