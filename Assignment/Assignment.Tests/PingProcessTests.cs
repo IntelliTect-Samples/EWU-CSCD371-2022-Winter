@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -107,11 +108,19 @@ public class PingProcessTests
         CancellationToken token = cancellationTokenSource.Token;
         cancellationTokenSource.Cancel();
         Task<PingResult> task = Sut.RunAsync("localhost", token);
-        
-        //cancellationTokenSource.Cancel();
-        PingResult result = task.Result;
-        Console.WriteLine("TEST: " + result.GetType());
-
+        try
+        {
+            PingResult result = task.Result;
+        }
+        catch (AggregateException exception)
+        {
+            exception = exception.Flatten();
+            exception.Handle(innerException =>
+            {
+                ExceptionDispatchInfo.Capture(innerException).Throw();
+                return true;
+            });
+        }
     }
 
     [TestMethod]
