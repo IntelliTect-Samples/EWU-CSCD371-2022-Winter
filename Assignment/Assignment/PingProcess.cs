@@ -22,7 +22,7 @@ public class PingProcess
         void updateStdOutput(string? line) =>
             (stringBuilder??=new StringBuilder()).AppendLine(line);
         Process process = RunProcessInternal(StartInfo, updateStdOutput, default, default);
-        return new PingResult( process.ExitCode, stringBuilder?.ToString().Trim());//HERE
+        return new PingResult( process.ExitCode, stringBuilder?.ToString());//HERE
     }
 
     public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
@@ -44,16 +44,18 @@ public class PingProcess
     async public Task<PingResult> RunAsync(IEnumerable<string> hostNameOrAddresses, CancellationToken cancellationToken = default)
     {
         StringBuilder stringBuilder = new();
-        ParallelQuery<Task<int>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
+        ParallelQuery<Task<PingResult>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
         {
-            Task<PingResult> task = Task.Run(() => Run(item));
-            await task.WaitAsync(default(CancellationToken));
-            stringBuilder.AppendLine(task.Result.StdOutput);
-            return task.Result.ExitCode;
+            Task<PingResult> task = Task.Run(() => Run(item), cancellationToken);
+            return await task.WaitAsync(default(CancellationToken));
         });
 
-        await Task.WhenAll(all);
-        int total = all.Aggregate(0, (total, item) => total + 1);
+        PingResult[] temp = await Task.WhenAll(all);
+        int total = all.Aggregate(0, (total, item) => total + item.Result.ExitCode);
+        foreach (PingResult task in temp)
+        {
+            stringBuilder.AppendLine(task.StdOutput?.Trim());
+        }
         return new PingResult(total, stringBuilder?.ToString().Trim());
     }
 
@@ -65,7 +67,7 @@ public class PingProcess
         {
             Process process = RunProcessInternal(startInfo, progressOutput, progressError, token);
             return process;
-        };     
+        });     
         //Task task = null!;
         //await task;
         throw new NotImplementedException();
