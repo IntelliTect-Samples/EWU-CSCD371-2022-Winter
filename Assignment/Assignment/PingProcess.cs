@@ -40,7 +40,6 @@ public class PingProcess
         PingResult result = await task;
         return result;
     }
-
     async public Task<PingResult> RunAsync(IEnumerable<string> hostNameOrAddresses, CancellationToken cancellationToken = default)
     {
         StringBuilder stringBuilder = new();
@@ -59,19 +58,23 @@ public class PingProcess
         return new PingResult(total, stringBuilder?.ToString().Trim());
     }
 
-    public Task<int> RunLongRunningAsync(ProcessStartInfo startInfo,
+    public Task<PingResult> RunLongRunningAsync(ProcessStartInfo startInfo,
         Action<string?>? progressOutput, Action<string?>? progressError, CancellationToken token)
     {
         //needs work... 
-        Task.Factory.StartNew(() => 
-        {
-            Process process = RunProcessInternal(startInfo, progressOutput, progressError, token);
-            return process;
-        });     
+        /* Task<PingResult> task = Task.Factory.StartNew<PingResult>(() =>
+         {
+             startInfo.Arguments = "localhost";
+             Process process = RunProcessInternal(startInfo, progressOutput, progressError, token);
+
+         }); */
+        Task<PingResult> task = Task.Factory.StartNew(() => Run(startInfo.Arguments),token, 
+            TaskCreationOptions.LongRunning, TaskScheduler.Current);
         //Task task = null!;
         //await task;
-        throw new NotImplementedException();
+        return task;
     }
+
 
     private Process RunProcessInternal(
         ProcessStartInfo startInfo,

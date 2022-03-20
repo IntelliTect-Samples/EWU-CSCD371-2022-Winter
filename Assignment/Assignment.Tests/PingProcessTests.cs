@@ -133,13 +133,16 @@ public class PingProcessTests
         Assert.AreEqual(expectedLineCount, lineCount);
     }
 
-  /*  [TestMethod]
+    [TestMethod]
     async public Task RunLongRunningAsync_UsingTpl_Success()
     {
-        PingResult result = await Sut.RunLongRunningAsync("localhost");
+        ProcessStartInfo processStartInfo = new ProcessStartInfo();
+        processStartInfo.Arguments = "localhost";
+        PingResult result = await Sut.RunLongRunningAsync(processStartInfo, default, default, default);
         // Test Sut.RunLongRunningAsync("localhost");
+        Console.WriteLine(result.StdOutput);
         AssertValidPingOutput(result);
-    }*/
+    }
 
     [TestMethod]
     public void StringBuilderAppendLine_InParallel_IsNotThreadSafe()
