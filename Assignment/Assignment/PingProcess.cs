@@ -103,6 +103,7 @@ public class PingProcess
             }
         }
         return process;
+
         void OutputHandler(object s, DataReceivedEventArgs e)
         {
             progressOutput?.Invoke(e.Data);
