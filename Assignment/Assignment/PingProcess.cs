@@ -9,65 +9,27 @@ using System.Threading.Tasks;
 
 namespace Assignment;
 
-public record struct PingResult(int ExitCode, string? StdOutput);
+public record struct PingResult(int ExitCode, string? Output);
 
 public class PingProcess
 {
     private ProcessStartInfo StartInfo { get; } = new("ping");
 
-    public PingResult Run(string hostNameOrAddress)
+    public PingResult Run(string hostAddress)
     {
-        StartInfo.Arguments = hostNameOrAddress;
+        StartInfo.Arguments = hostAddress;
         StringBuilder? stringBuilder = null;
-        void updateStdOutput(string? line) =>
-            (stringBuilder??=new StringBuilder()).AppendLine(line);
-        Process process = RunProcessInternal(StartInfo, updateStdOutput, default, default);
-        return new PingResult( process.ExitCode, stringBuilder?.ToString());
-    }
-
-    public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
-    {
-        throw new NotImplementedException();
-    }
-
-    async public Task<PingResult> RunAsync(
-        string hostNameOrAddress, CancellationToken cancellationToken = default)
-    {
-        Task task = null!;
-        await task;
-        throw new NotImplementedException();
-    }
-
-    async public Task<PingResult> RunAsync(params string[] hostNameOrAddresses)
-    {
-        StringBuilder? stringBuilder = null;
-        ParallelQuery<Task<int>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
-        {
-            Task<PingResult> task = null!;
-            // ...
-
-            await task.WaitAsync(default(CancellationToken));
-            return task.Result.ExitCode;
-        });
-
-        await Task.WhenAll(all);
-        int total = all.Aggregate(0, (total, item) => total + item.Result);
-        return new PingResult(total, stringBuilder?.ToString());
-    }
-
-    async public Task<PingResult> RunLongRunningAsync(
-        string hostNameOrAddress, CancellationToken cancellationToken = default)
-    {
-        Task task = null!;
-        await task;
-        throw new NotImplementedException();
+        void updateOutput(string? str) =>
+            (stringBuilder ??= new StringBuilder()).AppendLine(str);
+        Process process = RunProcessInternal(StartInfo, updateOutput, default, default);
+        return new PingResult(process.ExitCode, stringBuilder?.ToString());
     }
 
     private Process RunProcessInternal(
-        ProcessStartInfo startInfo,
-        Action<string?>? progressOutput,
-        Action<string?>? progressError,
-        CancellationToken token)
+    ProcessStartInfo startInfo,
+    Action<string?>? progressOutput,
+    Action<string?>? progressError,
+    CancellationToken token)
     {
         var process = new Process
         {
@@ -85,14 +47,12 @@ public class PingProcess
         process.EnableRaisingEvents = true;
         process.OutputDataReceived += OutputHandler;
         process.ErrorDataReceived += ErrorHandler;
-
         try
         {
             if (!process.Start())
             {
                 return process;
             }
-
             token.Register(obj =>
             {
                 if (obj is Process p && !p.HasExited)
@@ -107,8 +67,6 @@ public class PingProcess
                     }
                 }
             }, process);
-
-
             if (process.StartInfo.RedirectStandardOutput)
             {
                 process.BeginOutputReadLine();
@@ -117,7 +75,6 @@ public class PingProcess
             {
                 process.BeginErrorReadLine();
             }
-
             if (process.HasExited)
             {
                 return process;
@@ -140,20 +97,16 @@ public class PingProcess
             }
             process.OutputDataReceived -= OutputHandler;
             process.ErrorDataReceived -= ErrorHandler;
-
             if (!process.HasExited)
             {
                 process.Kill();
             }
-
         }
         return process;
-
         void OutputHandler(object s, DataReceivedEventArgs e)
         {
             progressOutput?.Invoke(e.Data);
         }
-
         void ErrorHandler(object s, DataReceivedEventArgs e)
         {
             progressError?.Invoke(e.Data);
@@ -167,7 +120,47 @@ public class PingProcess
         startInfo.RedirectStandardOutput = true;
         startInfo.UseShellExecute = false;
         startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
         return startInfo;
+    }
+
+    async public Task<PingResult> RunLongRunningAsync(
+    string hostNameOrAddress, CancellationToken cancellationToken = default)
+    {
+        Task<PingResult> task = Task.Factory.StartNew(
+            () => Run(hostNameOrAddress), cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Current);
+        await task;
+        return task.Result;
+    }
+
+    async public Task<PingResult> RunAsync(IEnumerable<string> hostNameOrAddresses
+    , CancellationToken cancellationToken = default)
+    {
+        StringBuilder stringBuilder = new();
+        ParallelQuery<Task<PingResult>>? all = hostNameOrAddresses.AsParallel().Select(async item =>
+        {
+            Task<PingResult> task = Task.Run(() => Run(item), cancellationToken);
+            await task.WaitAsync(default(CancellationToken));
+            return task.Result;
+        });
+
+        await Task.WhenAll(all);
+        int total = all.Aggregate(0, (total, item) => total + item.Result.ExitCode);
+        stringBuilder.Append(all.Aggregate("", (compiledString, currentString) => compiledString.Trim() + currentString.Result.Output));
+        return new PingResult(total, stringBuilder?.ToString().Trim());
+    }
+
+    async public Task<PingResult> RunAsync(
+    string hostNameOrAddress, CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        Task<PingResult> task = Task.Run(() => Run(hostNameOrAddress), cancellationToken);
+        await task;
+        PingResult result = task.Result;
+        return result;
+    }
+
+    public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
+    {
+        return Task<PingResult>.Run(() => Run(hostNameOrAddress));
     }
 }
