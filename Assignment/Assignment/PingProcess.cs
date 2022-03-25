@@ -15,9 +15,9 @@ public class PingProcess
         StartInfo.Arguments = hostNameOrAddress;
         StringBuilder? stringBuilder = null;
         void updateStdOutput(string? line) =>
-            (stringBuilder??=new StringBuilder()).AppendLine(line);
+            (stringBuilder ??= new StringBuilder()).AppendLine(line);
         Process process = RunProcessInternal(StartInfo, updateStdOutput, default, default);
-        return new PingResult( process.ExitCode, stringBuilder?.ToString());
+        return new PingResult(process.ExitCode, stringBuilder?.ToString());
     }
 
     public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
@@ -31,7 +31,7 @@ public class PingProcess
     {
         cancellationToken.ThrowIfCancellationRequested();
         Task<PingResult> task = Task.Run(() => Run(hostNameOrAddress), cancellationToken);
-      
+
         PingResult result = await task;
         return result;
     }
@@ -53,8 +53,8 @@ public class PingProcess
     public Task<PingResult> RunLongRunningAsync(ProcessStartInfo startInfo,
         Action<string?>? progressOutput, Action<string?>? progressError, CancellationToken token)
     {
-      
-        Task<PingResult> task = Task.Factory.StartNew(() => Run(startInfo.Arguments),token, 
+
+        Task<PingResult> task = Task.Factory.StartNew(() => Run(startInfo.Arguments), token,
             TaskCreationOptions.LongRunning, TaskScheduler.Current);
 
         return task;
