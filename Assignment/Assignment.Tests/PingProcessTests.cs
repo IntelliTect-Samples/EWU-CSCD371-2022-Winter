@@ -97,13 +97,23 @@ public class PingProcessTests
     [ExpectedException(typeof(TaskCanceledException))]
     public void RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrappingTaskCanceledException()
     {
-        // Use exception.Flatten()
+        try
+        {
+            CancellationTokenSource cancellationToken = new CancellationTokenSource();
+            cancellationToken.Cancel();
+            Task<PingResult> task = Sut.RunAsync("localhost", cancellationToken.Token);
+            task.Wait();
+            PingResult result = task.Result;
+        }
+        catch (AggregateException e)
+        {
+            ExceptionDispatchInfo.Capture(e.Flatten().InnerException!).Throw();
+        }
     }
 
     [TestMethod]
     async public Task RunAsync_MultipleHostAddresses_True()
     {
-        // Pseudo Code - don't trust it!!!
         string[] hostNames = new string[] { "localhost", "localhost", "localhost", "localhost" };
         int expectedLineCount = PingOutputLikeExpression.Split(Environment.NewLine).Length*hostNames.Length;
         PingResult result = await Sut.RunAsync(hostNames);
@@ -112,14 +122,11 @@ public class PingProcessTests
     }
 
     [TestMethod]
-#pragma warning disable CS1998 // Remove this
     async public Task RunLongRunningAsync_UsingTpl_Success()
     {
-        PingResult result = default;
-        // Test Sut.RunLongRunningAsync("localhost");
+        PingResult result = zwait Sut.RunLongRunningAsync("localhost")
         AssertValidPingOutput(result);
     }
-#pragma warning restore CS1998 // Remove this
 
     [TestMethod]
     public void StringBuilderAppendLine_InParallel_IsNotThreadSafe()
