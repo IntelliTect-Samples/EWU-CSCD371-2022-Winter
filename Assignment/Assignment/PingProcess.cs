@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Assignment;
 
@@ -22,7 +17,7 @@ public class PingProcess
         void updateStdOutput(string? line) =>
             (stringBuilder??=new StringBuilder()).AppendLine(line);
         Process process = RunProcessInternal(StartInfo, updateStdOutput, default, default);
-        return new PingResult( process.ExitCode, stringBuilder?.ToString());//HERE
+        return new PingResult( process.ExitCode, stringBuilder?.ToString());
     }
 
     public Task<PingResult> RunTaskAsync(string hostNameOrAddress)
@@ -49,29 +44,19 @@ public class PingProcess
             return await task.WaitAsync(default(CancellationToken));
         });
 
-        PingResult[] temp = await Task.WhenAll(all);
+        await Task.WhenAll(all);
         int total = all.Aggregate(0, (total, item) => total + item.Result.ExitCode);
-        foreach (PingResult task in temp)
-        {
-            stringBuilder.AppendLine(task.StdOutput?.Trim());
-        }
+        stringBuilder.Append(all.Aggregate("", (resultString, currentString) => resultString.Trim() + currentString.Result.StdOutput));
         return new PingResult(total, stringBuilder?.ToString().Trim());
     }
 
     public Task<PingResult> RunLongRunningAsync(ProcessStartInfo startInfo,
         Action<string?>? progressOutput, Action<string?>? progressError, CancellationToken token)
     {
-        //needs work... 
-        /* Task<PingResult> task = Task.Factory.StartNew<PingResult>(() =>
-         {
-             startInfo.Arguments = "localhost";
-             Process process = RunProcessInternal(startInfo, progressOutput, progressError, token);
-
-         }); */
+      
         Task<PingResult> task = Task.Factory.StartNew(() => Run(startInfo.Arguments),token, 
             TaskCreationOptions.LongRunning, TaskScheduler.Current);
-        //Task task = null!;
-        //await task;
+
         return task;
     }
 
