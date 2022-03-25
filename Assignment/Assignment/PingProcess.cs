@@ -30,7 +30,7 @@ public class PingProcess
         string hostNameOrAddress, CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        Task<PingResult> task = Task.Run(() => Run(hostNameOrAddress));
+        Task<PingResult> task = Task.Run(() => Run(hostNameOrAddress), cancellationToken);
       
         PingResult result = await task;
         return result;
