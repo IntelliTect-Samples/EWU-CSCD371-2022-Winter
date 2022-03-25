@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace Assignment;
 
+//copied our code from the original PR made on 3/21
+
 public record struct PingResult(int ExitCode, string? Output);
 
 public class PingProcess
